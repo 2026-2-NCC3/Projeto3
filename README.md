@@ -6,7 +6,7 @@
 
 # Grupo: `erro_null`
 
-## Integrantes: <a href="https://www.linkedin.com/in/emilly-oliveira-860ba32b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Emilly Oliveira dos Santos</a>, <a href="https://www.linkedin.com/in/lucas-soares-a6b677364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Lucas de Freitas Soares</a>, ...
+## Integrantes: <a href="https://www.linkedin.com/in/emilly-oliveira-860ba32b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Emilly Oliveira dos Santos</a>, <a href="https://www.linkedin.com/in/hellen-silva-87611b1b5?utm_source=share_via&utm_content=profile&utm_medium=member_android">Hellen Caroline Batista Silva</a>, <a href="https://www.linkedin.com/in/lucascarretero?utm_source=share_via&utm_content=profile&utm_medium=member_android">Lucas de Carvalho Carretero</a>, <a href="https://www.linkedin.com/in/lucas-soares-a6b677364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Lucas de Freitas Soares</a>.
 
 ## Professores: <a href="https://www.linkedin.com/in/katia-bossi/">Katia Milani Lara Bossi</a>, <a href="https://www.linkedin.com/in/marco-aurelio-lima-barbosa/">Marco Aurelio Lima Barbosa</a>, <a href="https://www.linkedin.com/in/rodrigo-da-rosa-phd/">Rodrigo da Rosa</a>, <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>
 <br>
@@ -18,9 +18,16 @@
 </p>
 
 ## Descrição
-A <a href="https://proximaetapa.org.br/">Próxima Etapa</a> é uma ONG que ...
+A <a href="https://proximaetapa.org.br/">Próxima Etapa</a> é uma ONG onde sua missão é facilitar o acesso de estudantes de escolas públicas a uma educação e orientação profissional para alunos que tem dificuldades em encontrar uma faculdade, curso e profissão que querem seguir; A organização propõe uma plataforma que tem o objetivo de aprimorar a experiência do aluno e ampliar seu relacionamento entre a ONG e seus participantes.
 <br>
-Nós do grupo erro_null ...
+  Nós do grupo **erro_null** recebemos com gratidão o desafio de tornar totalmente funcional essa visão que foi apresentada pela **Próxima Etapa**. Em nosso projeto temos o objetivo de criar um aplicativo *mobile*, com integração a uma API e ao banco de dados disponibilizado pela ONG, oferecendo serviços relacionados a jornada do estudante como:
+- cursos;
+- realizações de testes;
+- card digital;
+- consulta de certificados;
+- e muitas outras funcionalidades!
+
+
 
 ## Estrutura de pastas
 
@@ -77,16 +84,15 @@ Projeto3/
 - **`Backend/src/controllers/`**: Controladores responsáveis pelo CRUD, cadastro e login dos tipos de usuários
 - **`Backend/src/routes.js/`**: Rotas que recebem e direcionam o caminho traçado pelo usuário
 - **`Backend/src/uploadConfig.js/`**: Configuração de upload de arquivos antes do registro no banco
-- **`Frontend/`**: Interface do usuário em HTML, CSS e JavaScript
+- **`Frontend/`**: Interface do usuário 
 
 ## Detalhamento do Projeto
 
-O projeto foi realizado de forma com que enaltecesse todos e ajudasse a se desenvolver<br><br>
-**`a`**: <br>
-**`a`**: <br>
-**`a`**: <br>
-**`a`**: <br>
-**`a`**: <br>
+O projeto foi realizado com a participação de todos: <br><br>
+**`Emilly Oliveira dos Santos`**: Eu fiz <br>
+**`Hellen Caroline Batista Silva`**: Eu fiz <br>
+**`Lucas de Carvalho Carretero`**: Eu fiz <br>
+**`Lucas de Freitas Soares`**: Eu fiz <br>
 
 ## Configuração para Desenvolvimento
 
@@ -101,6 +107,7 @@ O projeto foi realizado de forma com que enaltecesse todos e ajudasse a se desen
 |------------|---------------|
 | **Android** | FrontEnd do apk |
 | **Eclipse** | Java |
+| **BDD** | SQL - Banco de Dados |
 
 ## Licença/License
 
