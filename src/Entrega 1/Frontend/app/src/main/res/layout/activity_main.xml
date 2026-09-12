@@ -5,15 +5,159 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    tools:context=".MainActivity"
+    android:background="@color/white2">
+
+    <ImageView
+        android:id="@+id/logo"
+        android:src="@drawable/logo_proxima_etapa"
+        android:layout_width="100dp"
+        android:layout_height="70dp"
+        android:layout_marginTop="20dp"
+        app:layout_constraintBottom_toTopOf="@id/titulo"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginStart="157dp"
+        app:layout_constraintTop_toTopOf="parent"
+        />
 
     <TextView
+        android:id="@+id/titulo"
+        android:textColor="@color/green"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Hello World!"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:text="Bem Vindo à sua próxima etapa!"
+        android:textSize="25dp"
+        android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@id/logo"
+        />
+
+    <TextView
+        android:id="@+id/txt1"
+        android:textColor="@color/yellow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Seus cursos"
+        android:textSize="25dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/titulo"
+
+        />
+
+    <TextView
+        android:id="@+id/nomeCurso1"
+        android:textColor="@color/dark_blue"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Administração"
+        android:textSize="12dp"
+        android:layout_marginTop="10dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@id/imgC1"
+        app:layout_constraintStart_toStartOf="@id/imgC1"
+        app:layout_constraintBottom_toTopOf="@id/imgC1"
+        />
+
+    <ImageView
+        android:id="@+id/imgC1"
+        android:src="@drawable/adm_logo"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/txt1"
+        app:layout_constraintStart_toStartOf="parent"
+        android:layout_marginLeft="50dp"
+        />
+
+    <Button
+        android:id="@+id/btnC1"
+        android:backgroundTint="@color/purple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visualizar"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/imgC1"/>
+
+    <TextView
+        android:id="@+id/nomeCurso2"
+        android:textColor="@color/dark_blue"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Logística"
+        android:textSize="12dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@id/imgC2"
+        app:layout_constraintStart_toStartOf="@id/imgC2"
+        app:layout_constraintBottom_toTopOf="@id/imgC2"
+        />
+
+    <ImageView
+        android:id="@+id/imgC2"
+        android:src="@drawable/logistica_logo"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/txt1"
+        app:layout_constraintStart_toEndOf="@id/imgC1"
+        android:layout_marginLeft="50dp"
+        />
+
+    <Button
+        android:id="@+id/btnC2"
+        android:backgroundTint="@color/purple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visualizar"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toEndOf="@id/btnC1"
+        app:layout_constraintTop_toBottomOf="@id/imgC2"/>
+
+    <TextView
+        android:id="@+id/nomeCurso3"
+        android:textColor="@color/dark_blue"
+        android:textStyle="bold"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Marketing"
+        android:textSize="12dp"
+        android:layout_marginTop="3dp"
+        android:layout_marginBottom="10dp"
+        app:layout_constraintEnd_toEndOf="@id/imgC3"
+        app:layout_constraintStart_toStartOf="@id/imgC3"
+        app:layout_constraintBottom_toTopOf="@id/imgC3"
+        />
+
+    <ImageView
+        android:id="@+id/imgC3"
+        android:src="@drawable/marketing_logo"
+        android:layout_width="70dp"
+        android:layout_height="50dp"
+        android:layout_marginTop="30dp"
+        app:layout_constraintTop_toBottomOf="@id/txt1"
+        app:layout_constraintStart_toEndOf="@id/imgC2"
+        android:layout_marginLeft="50dp"
+        />
+
+    <Button
+        android:id="@+id/btnC3"
+        android:backgroundTint="@color/purple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Visualizar"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="10dp"
+        app:layout_constraintStart_toEndOf="@id/btnC2"
+        app:layout_constraintTop_toBottomOf="@id/imgC2"/>
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>
