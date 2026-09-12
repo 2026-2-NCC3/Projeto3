@@ -6,7 +6,7 @@
 
 # Grupo: `erro_null`
 
-## Integrantes: <a href="https://www.linkedin.com/in/emilly-oliveira-860ba32b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Emilly Oliveira dos Santos</a>, <a href="https://www.linkedin.com/in/hellen-silva-87611b1b5?utm_source=share_via&utm_content=profile&utm_medium=member_android">Hellen Caroline Batista Silva</a>, <a href="https://www.linkedin.com/in/lucascarretero?utm_source=share_via&utm_content=profile&utm_medium=member_android">Lucas de Carvalho Carretero</a>, <a href="https://www.linkedin.com/in/lucas-soares-a6b677364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Lucas de Freitas Soares</a>.
+## Integrantes: <a href="https://www.linkedin.com/in/emilly-oliveira-860ba32b4?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Emilly Oliveira dos Santos</a>, <a href="https://www.linkedin.com/in/hellen-silva-87611b1b5?utm_source=share_via&utm_content=profile&utm_medium=member_android">Hellen Caroline Batista Silva</a>, <a href="https://www.linkedin.com/in/lucascarretero?utm_source=share_via&utm_content=profile&utm_medium=member_android">Lucas de Carvalho </a>, <a href="https://www.linkedin.com/in/lucas-soares-a6b677364?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app">Lucas de Freitas Soares</a>.
 
 ## Professores: <a href="https://www.linkedin.com/in/katia-bossi/">Katia Milani Lara Bossi</a>, <a href="https://www.linkedin.com/in/marco-aurelio-lima-barbosa/">Marco Aurelio Lima Barbosa</a>, <a href="https://www.linkedin.com/in/rodrigo-da-rosa-phd/">Rodrigo da Rosa</a>, <a href="https://www.linkedin.com/in/victorbarq/">Victor Bruno Alexander Rosetti de Quiroz</a>
 <br>
