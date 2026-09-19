@@ -7,18 +7,23 @@ public class Curso {
     public String data;
     public String desc;
 
-    /*public ImageView imgCurso;*/
+    public int imagemId;
 
 
-    public Curso(String curso, String data, String desc /*ImageView imgCurso*/){
+
+    public Curso(String curso, String data, String desc, int imagemId){
         this.curso = curso;
         this.data = data;
         this.desc = desc;
-        //this.imgCurso = imgCurso;
+        this.imagemId = imagemId;
     }
 
     public String getInfo(){
-        return /*imgCurso*/ "Nome do Curso: " + curso + "\nData do curso: " + data + "\nDescrição:\n" + desc;
+        return "Nome do Curso: " + curso + "\nData do curso: " + data + "\nDescrição:\n" + desc;
+    }
+
+    public int getImageId(){
+        return imagemId;
     }
 
 }

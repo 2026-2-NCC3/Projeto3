@@ -41,5 +41,23 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/imgCurso"
+        app:layout_constraintBottom_toTopOf="@id/btnVoltar"
+        android:layout_marginBottom="20dp"
         />
+
+    <Button
+        android:id="@+id/btnVoltar"
+        android:backgroundTint="@color/purple"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Voltar"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="30dp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/cursoInfo"
+        app:layout_goneMarginTop="20dp"
+        android:layout_marginRight="20dp"
+        />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

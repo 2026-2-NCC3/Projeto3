@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
-        curso1 = new Curso("Administração", "Terça-feira", "Sua próxima etapa será transformar suas ideias em resultados! Desenvolva habilidades essenciais de gestão, organize processos e torne-se o líder que o mercado de trabalho procura com nosso curso prático de Administração.");
-        curso2 = new Curso("Logística", "quarta-feira", "Sua próxima etapa será conectar o mundo e entregar resultados! Desenvolva habilidades essenciais em controle de frotas, armazenamento e operações ágeis. Torne-se o profissional que o mercado logístico procura.");
-        curso3 = new Curso("Administração3", "quinta-feira", "Sua próxima etapa será transformar sua criatividade em resultados! Desenvolva habilidades em mídias sociais, comunicação e vendas. Torne-se o profissional de marketing que sabe conectar grandes marcas a pessoas.");
+        curso1 = new Curso("Administração", "Terça-feira", "Sua próxima etapa será transformar suas ideias em resultados! Desenvolva habilidades essenciais de gestão, organize processos e torne-se o líder que o mercado de trabalho procura com nosso curso prático de Administração.", R.drawable.adm_logo);
+        curso2 = new Curso("Logística", "quarta-feira", "Sua próxima etapa será conectar o mundo e entregar resultados! Desenvolva habilidades essenciais em controle de frotas, armazenamento e operações ágeis. Torne-se o profissional que o mercado logístico procura.", R.drawable.logistica_logo);
+        curso3 = new Curso("Marketing", "quinta-feira", "Sua próxima etapa será transformar sua criatividade em resultados! Desenvolva habilidades em mídias sociais, comunicação e vendas. Torne-se o profissional de marketing que sabe conectar grandes marcas a pessoas.", R.drawable.marketing_logo);
 
         Button button1 = findViewById(R.id.btnC1);
         Button button2 = findViewById(R.id.btnC2);
@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent irParaSegundaTela = new Intent(MainActivity.this, CursoInfo.class);
                 irParaSegundaTela.putExtra("cursoInfo", curso1.getInfo());
+                irParaSegundaTela.putExtra("cursoImagem", curso1.getImageId());
                 startActivity(irParaSegundaTela);
             }
         });
@@ -45,6 +46,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent irParaSegundaTela = new Intent(MainActivity.this, CursoInfo.class);
                 irParaSegundaTela.putExtra("cursoInfo", curso2.getInfo());
+                irParaSegundaTela.putExtra("cursoImagem", curso2.getImageId());
                 startActivity(irParaSegundaTela);
             }
         });
@@ -55,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent irParaSegundaTela = new Intent(MainActivity.this, CursoInfo.class);
                 irParaSegundaTela.putExtra("cursoInfo", curso3.getInfo());
+                irParaSegundaTela.putExtra("cursoImagem", curso3.getImageId());
                 startActivity(irParaSegundaTela);
             }
         });
