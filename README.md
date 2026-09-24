@@ -14,7 +14,7 @@
 
 # Projeto - `Próxima Etapa`
 <p align="center">
-  <img src="https://i.postimg.cc/TPFTYSp3/Imagem-Proxima-Etapa.png" alt="Logo Próxima Etapa" width="240">
+  <img src="https://proximaetapa.org.br/assets/logo-proxima-etapa-D8depET2.png" alt="Logo Próxima Etapa" width="240">
 </p>
 
 ## Descrição
