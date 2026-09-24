@@ -25,7 +25,7 @@ A <a href="https://proximaetapa.org.br/">Próxima Etapa</a> é uma ONG onde sua 
 - realizações de testes;
 - card digital;
 - consulta de certificados;
-- e muitas outras funcionalidades!
+- e muitas outras funcionalidades.
 
 
 
@@ -36,11 +36,13 @@ Projeto3/
 ├── 📂 documentos/
 │   ├── 📄Documento - ( a discutir ).pdf*
 │   ├── 📄Documento - ( a discutir ).pdf*
-│   ├── 📂 Entrega 1 (wip)/*
-│   │   ├── 📂 
-│   │   ├── 📂 
-│   │   ├── 📂 
-│   │   ├── 📂 
+│   ├── 📄 README
+│   ├── 📂 Entrega 1 /*
+│   │   ├── 📂 Análise Descritiva de Dados
+|   |   |    └── 📄 Análise Descritiva de Dados - Entrega 1
+│   │   ├── 📂 Programação Orientada a Objetos e Estrutura de Dados
+│   │   ├── 📂 Programação para Dispositivos Móveis
+│   │   ├── 📂 Projeto Interdisciplinar - Aplicativo Móvel
 │   │   └── 📄 Venha para a FECAP!.txt
 │   │
 │   └── 📂 Entrega 2 (wip)/*
@@ -51,48 +53,41 @@ Projeto3/
 │       └── 📄 Venha para a FECAP!.txt
 │
 |
-├── 📂 Backend (wip)/*
-│   ├── 📂 src/
-│   │   ├── 📂 controllers (wip)/
+├── 📂 imagens/*
+│   |  └── 📄
+│   │  
 │   │                  
-├── 📂 middlewares (wip)/
-│   |
+├── 📂 src (wip)/
+│   ├── 📂 Entrega 1 /*
+│   |   ├── 📂 Backend
+│   |   ├── 📂 Frontend
+│   |   └── 📄 Venha para a FECAP!.tx
 |   |
-├── 📂 services (wip)/
-│   │   │   └── 📄 tokenService.js               # Gera um token de login
-│   │   ├── 📄 app.js                            # Prepara as ferramentas e middlewares
-│   │   ├── 📄 db.js                             # Conexão com o banco de dados
-│   │   ├── 📄 routes.js                         # Recebem as rotas(links) do marketplace
-│   │   ├── 📄 server.js                         # Inicia o app
-│   │   └── 📄 uploadConfig.js                   # Salva arquivos de imagem antes de registrar no banco
-│   ├── 📄 .env
-│   ├── 📄 package.json
-│   └── 📄 package-lock.json
-|
-├── 📂 Frontend (wip)/*
-| 
+|   └── 📂 Entrega 2 /*
+│       ├── 📂
+│       ├── 📂
+│       └── 📄 Venha para a FECAP!.tx
 |
 ├── 📄 .gitignore
-├── 📄 package-lock.json
 └── 📄 README.md
 </pre>
 
 ## Descrição das pastas
 
 - **`documentos/`**: Documentação do projeto, organizada por entregas e disciplinas
+- **`imagens/`**: Imagens do projeto, sendo presentes dentro dele ou referenciadas
+- **`src/`**: Código do projeto, organizada por entregas, FrontEnd e BackEnd
 - **`Backend/`**: Código-fonte da API REST (Node.js + Express)
-- **`Backend/src/controllers/`**: Controladores responsáveis pelo CRUD, cadastro e login dos tipos de usuários
-- **`Backend/src/routes.js/`**: Rotas que recebem e direcionam o caminho traçado pelo usuário
-- **`Backend/src/uploadConfig.js/`**: Configuração de upload de arquivos antes do registro no banco
-- **`Frontend/`**: Interface do usuário 
+- **`Frontend`**: Interface do usuário
+
 
 ## Detalhamento do Projeto
 
 O projeto foi realizado com a participação de todos: <br><br>
-**`Emilly Oliveira dos Santos`**: Eu fiz <br>
-**`Hellen Caroline Batista Silva`**: Eu fiz <br>
-**`Lucas de Carvalho Carretero`**: Eu fiz <br>
-**`Lucas de Freitas Soares`**: Eu fiz <br>
+**`Emilly Oliveira dos Santos`**: Documentação e GitHub <br>
+**`Hellen Caroline Batista Silva`**: Banco de Dados <br>
+**`Lucas de Carvalho Carretero`**: Código do FrontEnd <br>
+**`Lucas de Freitas Soares`**: Código do BackEnd <br>
 
 ## Configuração para Desenvolvimento
 
