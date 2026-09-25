@@ -9,8 +9,6 @@ public class Curso {
 
     public int imagemId;
 
-
-
     public Curso(String curso, String data, String desc, int imagemId){
         this.curso = curso;
         this.data = data;

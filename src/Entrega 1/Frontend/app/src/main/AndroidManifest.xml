@@ -17,9 +17,10 @@
             android:exported="false" />
 
         <activity android:name=".CursoInfo"/>
+        <activity android:name=".LoginInfo"/>
 
         <activity
-            android:name=".LoginInfo"
+            android:name=".Cadastro"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

@@ -1,15 +1,18 @@
 package com.example.errornull_proximaetapa;
 
+
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+
 
 public class MainActivity extends AppCompatActivity {
 
@@ -33,6 +36,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 Intent irParaSegundaTela = new Intent(MainActivity.this, CursoInfo.class);
                 irParaSegundaTela.putExtra("cursoInfo", curso1.getInfo());
                 irParaSegundaTela.putExtra("cursoImagem", curso1.getImageId());
@@ -44,6 +48,7 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
+
                 Intent irParaSegundaTela = new Intent(MainActivity.this, CursoInfo.class);
                 irParaSegundaTela.putExtra("cursoInfo", curso2.getInfo());
                 irParaSegundaTela.putExtra("cursoImagem", curso2.getImageId());
@@ -54,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
         button3.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+
 
                 Intent irParaSegundaTela = new Intent(MainActivity.this, CursoInfo.class);
                 irParaSegundaTela.putExtra("cursoInfo", curso3.getInfo());
