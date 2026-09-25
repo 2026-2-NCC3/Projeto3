@@ -86,6 +86,16 @@ Projeto3/
 | **Android Studio** | FrontEnd do aplicativo |
 | **Visual Studio Code** | Java, JavaScript, .Node |
 | **MySql Workbench 8.0 CE** | SQL - Banco de Dados |
+| **PostMan** | Teste de Rota |
+
+## Configuração para Desenvolvimento
+
+### Pré-requisitos
+- <a href="https://developer.android.com/studio?hl=pt-br">Android Studio</a> (última versão)
+- <a href="https://code.visualstudio.com/">Visual Studio Code</a> (última versão)
+- <a href="https://dev.mysql.com/downloads/installer/">MySQL Server</a> (v8.0 ou superior)
+- <a href="https://www.postman.com/downloads/">Postman</a> (para testar as rotas)
+
 
 ## Detalhamento do Projeto
 
@@ -94,14 +104,6 @@ O projeto foi realizado com a participação de todos: <br><br>
 **`Hellen Caroline Batista Silva`**: Documentação e Banco de Dados <br>
 **`Lucas de Carvalho Carretero`**: Código do FrontEnd <br>
 **`Lucas de Freitas Soares`**: Código do BackEnd <br>
-
-## Configuração para Desenvolvimento
-
-### Pré-requisitos
-- <a href="https://nodejs.org/">Node.js</a> (v18 ou superior)
-- <a href="https://dev.mysql.com/downloads/installer/">MySQL Server</a> (v8.0 ou superior)
-- <a href="https://www.postman.com/downloads/">Postman</a> (para testar as rotas)
-
 
 
 
