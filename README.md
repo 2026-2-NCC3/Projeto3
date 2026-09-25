@@ -80,12 +80,18 @@ Projeto3/
 - **`Backend/`**: Código-fonte da API REST (Node.js + Express)
 - **`Frontend`**: Interface do usuário
 
+## Tecnologias utilizadas
+| Tecnologia | Detalhamento |
+|------------|---------------|
+| **Android Studio** | FrontEnd do aplicativo |
+| **Visual Studio Code** | Java, JavaScript, .Node |
+| **MySql Workbench 8.0 CE** | SQL - Banco de Dados |
 
 ## Detalhamento do Projeto
 
 O projeto foi realizado com a participação de todos: <br><br>
-**`Emilly Oliveira dos Santos`**: Documentação e GitHub <br>
-**`Hellen Caroline Batista Silva`**: Banco de Dados <br>
+**`Emilly Oliveira dos Santos`**: Documentação e código <br>
+**`Hellen Caroline Batista Silva`**: Documentação e Banco de Dados <br>
 **`Lucas de Carvalho Carretero`**: Código do FrontEnd <br>
 **`Lucas de Freitas Soares`**: Código do BackEnd <br>
 
@@ -97,12 +103,7 @@ O projeto foi realizado com a participação de todos: <br><br>
 - <a href="https://www.postman.com/downloads/">Postman</a> (para testar as rotas)
 
 
-## Tecnologias utilizadas
-| Tecnologia | Detalhamento |
-|------------|---------------|
-| **Android** | FrontEnd do apk |
-| **Eclipse** | Java |
-| **BDD** | SQL - Banco de Dados |
+
 
 ## Licença/License
 
