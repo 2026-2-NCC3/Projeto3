@@ -31,8 +31,8 @@ public class Usuario {
     private String email;
 
     @NotBlank(message = "A senha é obrigatória!")
-    @Column(name = "senha_hash", length = 255, nullable = false)
-    private String senhaHash;
+    @Column(name = "senha", length = 255, nullable = false)
+    private String senha;
 
     @Column(name = "tipo_usuario", length = 20, nullable = false)
     private String tipoUsuario;

@@ -59,7 +59,7 @@ public class UsuarioService {
         usuario.setCpf(dto.getCpf());
         usuario.setNome(dto.getNome());
         usuario.setEmail(dto.getEmail());
-        usuario.setSenhaHash(this.passwordEncoder.encode(dto.getSenha()));
+        usuario.setSenha(this.passwordEncoder.encode(dto.getSenha()));
         
         String tipo = dto.getTipoUsuario() != null ? dto.getTipoUsuario().toLowerCase() : "aluno";
         usuario.setTipoUsuario(tipo);
@@ -95,8 +95,8 @@ public class UsuarioService {
 
     public Usuario atualizarUsuario(Usuario usuario) {
         logger.info("Atualizando dados do usuário com CPF: {}", usuario.getCpf());
-        if (usuario.getSenhaHash() != null && !usuario.getSenhaHash().startsWith("$2a$")) {
-            usuario.setSenhaHash(this.passwordEncoder.encode(usuario.getSenhaHash()));
+        if (usuario.getSenha() != null && !usuario.getSenha().startsWith("$2a$")) {
+            usuario.setSenha(this.passwordEncoder.encode(usuario.getSenha()));
         }
         return usuarioRepository.save(usuario);
     }
@@ -111,7 +111,7 @@ public class UsuarioService {
         logger.info("Tentativa de autenticação para o email: {}", usuarioDto.getEmail());
         Usuario usuario = usuarioRepository.findByEmail(usuarioDto.getEmail());
         
-        if (usuario != null && passwordEncoder.matches(usuarioDto.getSenhaHash(), usuario.getSenhaHash())) {
+        if (usuario != null && passwordEncoder.matches(usuarioDto.getSenha(), usuario.getSenha())) {
             String tokenStr = com.br.projetoproximaetapa.security.TokenUtil.createToken(usuario);
             logger.info("Autenticação bem-sucedida. Token gerado para: {}", usuario.getEmail());
             return new Token(tokenStr);
