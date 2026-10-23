@@ -3,14 +3,14 @@ package com.example.errornull_proximaetapa;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
-import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
+import java.util.concurrent.TimeUnit;
+import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
 import retrofit2.Response;
@@ -19,70 +19,77 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginInfo extends AppCompatActivity {
 
-    private EditText entradaEmail;
-    private EditText entradaPassword;
-    private Button botaoConfirmar;
+    private EditText inputEmail, inputSenha;
+    private Button btnLogar, btnIrParaCadastro;
     private ApiService api;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        EdgeToEdge.enable(this);
         setContentView(R.layout.tela_login);
 
-        entradaEmail = findViewById(R.id.entrada_email);
-        entradaPassword = findViewById(R.id.entrada_password);
-        botaoConfirmar = findViewById(R.id.button);
+        inputEmail = findViewById(R.id.input_email);
+        inputSenha = findViewById(R.id.input_senha);
+        btnLogar = findViewById(R.id.btn_logar);
+        btnIrParaCadastro = findViewById(R.id.btn_ir_cadastro);
+
+        // Configuração do OkHttpClient com timeout estendido para o Render acordar
+        OkHttpClient okHttpClient = new OkHttpClient.Builder()
+                .connectTimeout(60, TimeUnit.SECONDS)
+                .readTimeout(60, TimeUnit.SECONDS)
+                .writeTimeout(60, TimeUnit.SECONDS)
+                .build();
 
         Retrofit retrofit = new Retrofit.Builder()
                 .baseUrl("https://pi3-kc5f.onrender.com/")
+                .client(okHttpClient)
                 .addConverterFactory(GsonConverterFactory.create())
                 .build();
 
         api = retrofit.create(ApiService.class);
 
-        botaoConfirmar.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                String loginDigitado = entradaEmail.getText().toString();
-                String senhaDigitada = entradaPassword.getText().toString();
+        btnLogar.setOnClickListener(v -> {
+            String email = inputEmail.getText().toString().trim();
+            String senha = inputSenha.getText().toString().trim();
 
-                if(loginDigitado.isEmpty() || senhaDigitada.isEmpty()) {
-                    Toast.makeText(LoginInfo.this, "Preencha todos os campos!", Toast.LENGTH_SHORT).show();
-                    return;
+            if (email.isEmpty() || senha.isEmpty()) {
+                Toast.makeText(LoginInfo.this, "Preencha o e-mail e a senha!", Toast.LENGTH_SHORT).show();
+                return;
+            }
+
+            LoginRequest request = new LoginRequest(email, senha);
+
+            api.fazerLogin(request).enqueue(new Callback<TokenResponse>() {
+                @Override
+                public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
+                    if (response.isSuccessful() && response.body() != null) {
+                        String token = response.body().getToken();
+                        Toast.makeText(LoginInfo.this, "Login efetuado com sucesso!", Toast.LENGTH_SHORT).show();
+
+                        // Redireciona para a Tela de Perfil e fecha a tela de login
+                        Intent intent = new Intent(LoginInfo.this, TelaPerfil.class);
+                        // Se precisares de passar o token para a tela de perfil, podes usar:
+                        // intent.putExtra("USER_TOKEN", token);
+                        startActivity(intent);
+                        finish();
+
+                    } else {
+                        Toast.makeText(LoginInfo.this, "E-mail ou senha inválidos.", Toast.LENGTH_SHORT).show();
+                    }
                 }
 
-                LoginRequest request = new LoginRequest(loginDigitado, senhaDigitada);
-
-                api.fazerLogin(request).enqueue(new Callback<Void>() {
-                    @Override
-                    public void onResponse(Call<Void> call, Response<Void> response) {
-
-                        if (response.isSuccessful()) {
-                            Intent intent = new Intent(LoginInfo.this, MainActivity.class);
-                            startActivity(intent);
-                            finish();
-                        } else {
-                            Toast.makeText(LoginInfo.this, "Usuário ou senha incorretos!", Toast.LENGTH_SHORT).show();
-                        }
-                    }
-
-                    @Override
-                    public void onFailure(Call<Void> call, Throwable t) {
-                        Toast.makeText(LoginInfo.this, "Erro de conexão com o servidor", Toast.LENGTH_SHORT).show();
-                        Log.e("API_ERRO", "Falha: " + t.getMessage());
-                    }
-                });
-            }
+                @Override
+                public void onFailure(Call<TokenResponse> call, Throwable t) {
+                    Toast.makeText(LoginInfo.this, "Erro de conexão com o servidor", Toast.LENGTH_SHORT).show();
+                    Log.e("API_ERRO", "Falha: " + t.getMessage());
+                }
+            });
         });
 
-        Button btnIrCadastro = findViewById(R.id.btn_ir_cadastro);
-        btnIrCadastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginInfo.this, Cadastro.class);
-                startActivity(intent);
-            }
-        });
+        if (btnIrParaCadastro != null) {
+            btnIrParaCadastro.setOnClickListener(v -> {
+                startActivity(new Intent(LoginInfo.this, Cadastro.class));
+            });
+        }
     }
 }

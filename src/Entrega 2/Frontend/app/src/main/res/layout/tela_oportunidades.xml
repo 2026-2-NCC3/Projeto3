@@ -5,7 +5,7 @@
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".MainActivity"
+    tools:context=".TelaCurso"
     android:background="@color/white2">
 
     <ImageView
@@ -25,8 +25,8 @@
         android:textColor="@color/green"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Bem Vindo à sua próxima etapa!"
-        android:textSize="25dp"
+        android:text="Conheça oportunidades de estudo!!"
+        android:textSize="25sp"
         android:layout_marginTop="30dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -38,8 +38,8 @@
         android:textColor="@color/yellow"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Seus cursos"
-        android:textSize="25dp"
+        android:text="Faculdades"
+        android:textSize="25sp"
         android:layout_marginTop="50dp"
         android:layout_marginBottom="20dp"
         app:layout_constraintEnd_toEndOf="parent"
@@ -54,8 +54,8 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Administração"
-        android:textSize="12dp"
+        android:text="FECAP"
+        android:textSize="12sp"
         android:layout_marginTop="10dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="@id/imgC1"
@@ -79,10 +79,11 @@
         android:backgroundTint="@color/purple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visualizar"
+        android:text="HELP"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
+
         app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnC2"
         app:layout_constraintTop_toBottomOf="@id/imgC1"/>
 
     <TextView
@@ -91,8 +92,8 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Logística"
-        android:textSize="12dp"
+        android:text="JUST FECAP"
+        android:textSize="12sp"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="@id/imgC2"
@@ -116,10 +117,11 @@
         android:backgroundTint="@color/purple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visualizar"
+        android:text="HELP"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
+
         app:layout_constraintStart_toEndOf="@id/btnC1"
+        app:layout_constraintEnd_toStartOf="@id/btnC3"
         app:layout_constraintTop_toBottomOf="@id/imgC2"/>
 
     <TextView
@@ -128,8 +130,8 @@
         android:textStyle="bold"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Marketing"
-        android:textSize="12dp"
+        android:text="FECAP"
+        android:textSize="12sp"
         android:layout_marginTop="3dp"
         android:layout_marginBottom="10dp"
         app:layout_constraintEnd_toEndOf="@id/imgC3"
@@ -153,11 +155,73 @@
         android:backgroundTint="@color/purple"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Visualizar"
+        android:text="HELP"
         android:layout_marginTop="20dp"
-        android:layout_marginLeft="10dp"
+
         app:layout_constraintStart_toEndOf="@id/btnC2"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/imgC2"/>
 
 
+
+
+    <Button
+        android:id="@+id/btnPerfil"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="50dp"
+        android:text="Perfil"
+        android:backgroundTint="@color/yellow"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnCurso"
+        app:layout_constraintEnd_toStartOf="@id/btnAvisos" />
+
+    <Button
+        android:id="@+id/btnCurso"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="50dp"
+        android:text="Curso"
+        android:backgroundTint="@color/yellow"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnOport"
+        app:layout_constraintEnd_toStartOf="@id/btnPerfil" />
+
+    <Button
+        android:id="@+id/btnOport"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="50dp"
+        android:text="Oportunidades"
+        android:backgroundTint="@color/purple"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="@id/btnCurso" />
+
+    <Button
+        android:id="@+id/btnAvisos"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="50dp"
+        android:text="Avisos"
+        android:backgroundTint="@color/yellow"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnPerfil"
+        app:layout_constraintEnd_toStartOf="@id/btnConfig" />
+
+    <Button
+        android:id="@+id/btnConfig"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginBottom="50dp"
+        android:text="Config"
+        android:backgroundTint="@color/yellow"
+
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toEndOf="@id/btnAvisos"
+        app:layout_constraintEnd_toEndOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
