@@ -19,7 +19,7 @@ import retrofit2.converter.gson.GsonConverterFactory;
 
 public class LoginInfo extends AppCompatActivity {
 
-    private EditText entradaEmail;
+    private EditText entradaNome;
     private EditText entradaPassword;
     private Button botaoConfirmar;
     private ApiService api;
@@ -30,7 +30,7 @@ public class LoginInfo extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.tela_login);
 
-        entradaEmail = findViewById(R.id.entrada_email);
+        entradaNome = findViewById(R.id.entrada_nome);
         entradaPassword = findViewById(R.id.entrada_password);
         botaoConfirmar = findViewById(R.id.button);
 
@@ -44,7 +44,7 @@ public class LoginInfo extends AppCompatActivity {
         botaoConfirmar.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                String loginDigitado = entradaEmail.getText().toString();
+                String loginDigitado = entradaNome.getText().toString();
                 String senhaDigitada = entradaPassword.getText().toString();
 
                 if(loginDigitado.isEmpty() || senhaDigitada.isEmpty()) {
@@ -78,11 +78,11 @@ public class LoginInfo extends AppCompatActivity {
 
         Button btnIrCadastro = findViewById(R.id.btn_ir_cadastro);
         btnIrCadastro.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(LoginInfo.this, Cadastro.class);
-                startActivity(intent);
-            }
+        @Override
+        public void onClick(View v) {
+        Intent intent = new Intent(LoginInfo.this, Cadastro.class);
+        startActivity(intent);
+        }
         });
     }
 }

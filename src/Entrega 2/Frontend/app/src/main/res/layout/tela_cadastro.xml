@@ -27,7 +27,7 @@
         android:layout_height="wrap_content"
         android:text="Cadastro de usuários"
         android:textColor="@color/green"
-        android:textSize="20dp"
+        android:textSize="25dp"
         android:textStyle="bold"
         app:layout_constraintTop_toBottomOf="@id/logo"
         app:layout_constraintEnd_toEndOf="parent"
@@ -37,60 +37,34 @@
     <EditText
         android:id="@+id/nome"
         android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:hint="Nome do aluno"
         android:inputType="text"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/Welcome"
-        app:layout_constraintBottom_toTopOf="@id/cpf"/>
-
-    <EditText
-        android:id="@+id/cpf"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:hint="CPF do aluno"
-        android:inputType="number"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/nome"
-        app:layout_constraintBottom_toTopOf="@id/email"/>
-
-    <EditText
-        android:id="@+id/email"
-        android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
-        android:hint="E-mail do aluno"
-        android:inputType="text"
-        android:textColorHint="@color/black"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/cpf"
         app:layout_constraintBottom_toTopOf="@id/telefone"/>
 
     <EditText
         android:id="@+id/telefone"
         android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:hint="Telefone do aluno"
-        android:inputType="number"
+        android:inputType="text"
         android:textColorHint="@color/black"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/email"
+        app:layout_constraintTop_toBottomOf="@+id/nome"
         app:layout_constraintBottom_toTopOf="@id/escola"/>
 
     <EditText
         android:id="@+id/escola"
         android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:hint="Escola do aluno"
         android:inputType="text"
         android:textColorHint="@color/black"
@@ -102,8 +76,8 @@
     <EditText
         android:id="@+id/cidade"
         android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:hint="Cidade do aluno"
         android:inputType="text"
         android:textColorHint="@color/black"
@@ -115,8 +89,8 @@
     <EditText
         android:id="@+id/grade"
         android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:hint="Grade do aluno"
         android:inputType="text"
         android:textColorHint="@color/black"
@@ -128,8 +102,8 @@
     <EditText
         android:id="@+id/senha"
         android:layout_width="300dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="15dp"
+        android:layout_height="48dp"
+        android:layout_marginTop="20dp"
         android:hint="Senha do aluno"
         android:inputType="textPassword"
         android:textColorHint="@color/black"
@@ -146,16 +120,16 @@
         android:backgroundTint="@color/yellow"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        android:layout_marginTop="10dp"
+        android:layout_marginTop="20dp"
         app:layout_constraintTop_toBottomOf="@+id/senha"
         />
 
-    <Button
+        <Button
         android:id="@+id/btn_ir_login"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Já tem uma conta? Faça Login"
-        android:backgroundTint="@color/yellow"
+        android:backgroundTint="@color/purple"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         android:layout_marginTop="10dp"

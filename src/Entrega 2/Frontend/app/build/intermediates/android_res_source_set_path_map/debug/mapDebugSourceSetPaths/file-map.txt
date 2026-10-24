@@ -1,0 +1,8 @@
+com.example.errornull_proximaetapa.app-pngs-0 C:\Users\PICHAU\OneDrive\Documentos\GitHub\PI\editarPI\PI3\Frontend\app\build\generated\res\pngs\debug
+com.example.errornull_proximaetapa.app-updated_navigation_xml-1 C:\Users\PICHAU\OneDrive\Documentos\GitHub\PI\editarPI\PI3\Frontend\app\build\generated\updated_navigation_xml\debug
+com.example.errornull_proximaetapa.app-packageDebugResources-2 C:\Users\PICHAU\OneDrive\Documentos\GitHub\PI\editarPI\PI3\Frontend\app\build\intermediates\incremental\debug\packageDebugResources\merged.dir
+com.example.errornull_proximaetapa.app-packageDebugResources-3 C:\Users\PICHAU\OneDrive\Documentos\GitHub\PI\editarPI\PI3\Frontend\app\build\intermediates\incremental\debug\packageDebugResources\stripped.dir
+com.example.errornull_proximaetapa.app-debug-4 C:\Users\PICHAU\OneDrive\Documentos\GitHub\PI\editarPI\PI3\Frontend\app\build\intermediates\merged_res\debug\mergeDebugResources
+com.example.errornull_proximaetapa.app-debug-5 C:\Users\PICHAU\OneDrive\Documentos\GitHub\PI\editarPI\PI3\Frontend\app\src\debug\res
+com.example.errornull_proximaetapa.app-main-6 C:\Users\PICHAU\OneDrive\Documentos\GitHub\PI\editarPI\PI3\Frontend\app\src\main\res
+gradleHome-0 C:\Users\PICHAU\.gradle

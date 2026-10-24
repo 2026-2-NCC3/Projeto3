@@ -11,7 +11,7 @@ public interface ApiService {
     /*@GET("/cursos")
     Call<List<Curso>> getCursos();*/
 
-    @POST("login")
+    @POST("alunos/login")
     Call<Void> fazerLogin(@Body LoginRequest request);
 
     @POST("alunos/cadastrar")

@@ -20,8 +20,6 @@ import retrofit2.converter.gson.GsonConverterFactory;
 public class Cadastro extends AppCompatActivity {
 
     private EditText nome_aluno;
-    private EditText cpf;
-    private EditText email;
     private EditText telefone_aluno;
     private EditText escola;
     private EditText cidade;
@@ -38,8 +36,6 @@ public class Cadastro extends AppCompatActivity {
         setContentView(R.layout.tela_cadastro);
 
         nome_aluno = findViewById(R.id.nome);
-        cpf = findViewById(R.id.cpf);
-        email = findViewById(R.id.email);
         telefone_aluno = findViewById(R.id.telefone);
         escola = findViewById(R.id.escola);
         cidade = findViewById(R.id.cidade);
@@ -59,20 +55,18 @@ public class Cadastro extends AppCompatActivity {
             public void onClick(View v) {
 
                 String txtNome = nome_aluno.getText().toString();
-                String txtCPF = cpf.getText().toString();
-                String txtEmail = email.getText().toString();
                 String txtTelefone = telefone_aluno.getText().toString();
                 String txtEscola = escola.getText().toString();
                 String txtCidade = cidade.getText().toString();
                 String txtGrade = grade.getText().toString();
                 String txtSenha = senha.getText().toString();
 
-                if (txtNome.isEmpty() || txtCPF.isEmpty() || txtEmail.isEmpty() || txtSenha.isEmpty()) {
-                    Toast.makeText(Cadastro.this, "Preencha ao menos Nome, CPF, E-mail e Senha!", Toast.LENGTH_SHORT).show();
+                if (txtNome.isEmpty() || txtSenha.isEmpty()) {
+                    Toast.makeText(Cadastro.this, "Preencha ao menos Nome e Senha!", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                CadastroRequest request = new CadastroRequest(txtNome, txtCPF, txtEmail,txtTelefone, txtEscola, txtCidade, txtGrade, txtSenha);
+                CadastroRequest request = new CadastroRequest(txtNome, txtTelefone, txtEscola, txtCidade, txtGrade, txtSenha);
 
                 api.fazerCadastro(request).enqueue(new Callback<Void>() {
                     @Override
@@ -99,11 +93,11 @@ public class Cadastro extends AppCompatActivity {
 
         Button btnIrLogin = findViewById(R.id.btn_ir_login);
         btnIrLogin.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(Cadastro.this, LoginInfo.class);
-                startActivity(intent);
-            }
+        @Override
+        public void onClick(View v) {
+        Intent intent = new Intent(Cadastro.this, LoginInfo.class);
+        startActivity(intent);
+        }
         });
     }
 }
