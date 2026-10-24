@@ -1,54 +1,102 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.coordinatorlayout.widget.CoordinatorLayout
+<LinearLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:theme="@style/Platform.MaterialComponents.Light"
-    tools:context=".MainActivity">
+    android:orientation="vertical"
+    android:padding="24dp"
+    tools:context=".MainActivity"
+    android:background="@color/white2">
 
     <FrameLayout
-        android:id="@+id/frame_layout"
+        android:id="@+id/frameLayoutBV"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"/>
+        android:layout_height="0dp"
+        android:layout_weight="1"/>
 
-    <com.google.android.material.bottomappbar.BottomAppBar
-        android:id="@+id/bottomappbar"
+    <LinearLayout
+        android:id="@+id/bottomBar"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_gravity="bottom"
-        android:backgroundTint="@color/yellow"
-        app:fabCradleMargin="12dp"
-        app:fabCradleRoundedCornerRadius="50dp">
+        android:layout_height="72dp"
+        android:orientation="horizontal"
+        android:gravity="center"
+        android:background="@color/lavender"
+        android:elevation="8dp">
 
-        <com.google.android.material.bottomnavigation.BottomNavigationView
-            android:id="@+id/bottomnavview"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginEnd="12dp"
-            app:labelVisibilityMode="selected"
-            app:elevation="0dp"
-            android:background="@color/transparent"
-            app:itemHorizontalTranslationEnabled="false"
-            app:menu="@menu/bottom_menu"/>
+        <LinearLayout
+            android:id="@+id/btnHome"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true">
 
-    </com.google.android.material.bottomappbar.BottomAppBar>
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/round_home_24"
+                app:tint="@color/dark_indigo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Home"
+                android:textSize="11sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
 
-    <com.google.android.material.floatingactionbutton.FloatingActionButton
-        android:id="@+id/menu_perfil"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:contentDescription="Abrir o Perfil"
-        android:backgroundTint="@color/lime_green"
-        android:src="@drawable/round_person"
-        app:layout_anchor="@id/bottomappbar"
-        app:layout_anchorGravity="top|center"
-        app:maxImageSize="35dp"
-        app:fabCustomSize="56dp"
-        app:elevation="8dp"
-        app:tint="@color/black"/>
+        <LinearLayout
+            android:id="@+id/btnCurso"
+            android:layout_width="1dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@color/white"
+            android:clickable="true"
+            android:focusable="true">
+
+            <ImageView
+                android:layout_width="24dp"
+                android:layout_height="24dp"
+                android:src="@drawable/book_cursos"
+                app:tint="@color/dark_indigo"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Cursos"
+                android:textSize="11sp"
+                android:layout_marginTop="4dp"/>
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/btnPerfil"
+            android:layout_width="0dp"
+            android:layout_height="match_parent"
+            android:layout_weight="1"
+            android:foregroundGravity="center">
+
+            <ImageView
+                android:layout_width="54dp"
+                android:layout_height="54dp"
+                android:src="@drawable/round_person"
+                android:contentDescription="Ação Principal"
+                android:background="@drawable/pf_botao_central"
+                android:scaleType="center"
+                android:padding="14dp"
+                android:elevation="6dp"
+                app:tint="@color/dark_indigo"/>
+
+        </LinearLayout>
 
 
-</androidx.coordinatorlayout.widget.CoordinatorLayout>
+
+
+
+    </LinearLayout>
+</LinearLayout>
