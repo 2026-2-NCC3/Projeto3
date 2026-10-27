@@ -3,6 +3,7 @@ package com.example.errornull_proximaetapa;
 import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.util.Patterns;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -13,7 +14,10 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.ConstraintLayout;
 
+import com.google.android.material.textfield.TextInputLayout;
+
 import java.util.concurrent.TimeUnit;
+import java.util.regex.Pattern;
 import okhttp3.OkHttpClient;
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -25,6 +29,7 @@ public class Cadastro extends AppCompatActivity {
 
     private RadioGroup rgTipoUsuario;
     private LinearLayout layoutAluno, layoutProfessor, layoutAdmin;
+    private TextInputLayout tilCpf, tilNome, tilEmail, textInputLayoutSenha;
     private EditText inputCpf, inputNome, inputEmail, inputSenha;
     private EditText inputTelefoneAluno, inputEscola, inputCidade, inputGrade;
     private EditText inputTelefoneProfessor, inputEspecialidade;
@@ -42,6 +47,12 @@ public class Cadastro extends AppCompatActivity {
         layoutAluno = findViewById(R.id.layout_campos_aluno);
         layoutProfessor = findViewById(R.id.layout_campos_professor);
         layoutAdmin = findViewById(R.id.layout_campos_admin);
+
+        // Referências dos TextInputLayouts para exibir o erro visual com .setError()
+        tilCpf = findViewById(R.id.tilCpf);
+        tilNome = findViewById(R.id.tilNome);
+        tilEmail = findViewById(R.id.tilEmail);
+        textInputLayoutSenha = findViewById(R.id.textInputLayoutSenha);
 
         inputCpf = findViewById(R.id.input_cpf);
         inputNome = findViewById(R.id.input_nome);
@@ -107,13 +118,34 @@ public class Cadastro extends AppCompatActivity {
         api = retrofit.create(ApiService.class);
 
         btnCadastrar.setOnClickListener(v -> {
+            // Limpa erros anteriores
+            if (tilCpf != null) tilCpf.setError(null);
+            if (tilNome != null) tilNome.setError(null);
+            if (tilEmail != null) tilEmail.setError(null);
+            if (textInputLayoutSenha != null) textInputLayoutSenha.setError(null);
+
             String cpf = inputCpf.getText().toString().trim();
             String nome = inputNome.getText().toString().trim();
             String email = inputEmail.getText().toString().trim();
             String senha = inputSenha.getText().toString().trim();
 
-            if (cpf.isEmpty() || nome.isEmpty() || email.isEmpty() || senha.isEmpty()) {
-                Toast.makeText(Cadastro.this, "Preencha os campos obrigatórios!", Toast.LENGTH_SHORT).show();
+            // Validações com feedback visual no TextInputLayout
+            if (cpf.isEmpty()) {
+                if (tilCpf != null) tilCpf.setError("O CPF é obrigatório");
+                return;
+            }
+            if (nome.isEmpty()) {
+                if (tilNome != null) tilNome.setError("O nome é obrigatório");
+                return;
+            }
+            if (!validarEmail(email)) {
+                if (tilEmail != null) tilEmail.setError("Insira um e-mail válido (ex: teste@email.com)");
+                return;
+            }
+            if (!validarSenha(senha)) {
+                if (textInputLayoutSenha != null) {
+                    textInputLayoutSenha.setError("Mín. 6 caracteres, 1 maiúscula, 1 minúscula, 1 número e 1 '@'");
+                }
                 return;
             }
 
@@ -152,10 +184,21 @@ public class Cadastro extends AppCompatActivity {
 
                 @Override
                 public void onFailure(Call<Object> call, Throwable t) {
-                    Toast.makeText(Cadastro.this, "Erro de conexão com o servidor", Toast.LENGTH_SHORT).show();
-                    Log.e("API_ERRO", "Falha: " + t.getMessage());
+                    Toast.makeText(Cadastro.this, "Erro: " + t.getClass().getSimpleName(), Toast.LENGTH_SHORT).show();
+                    Log.e("API_ERRO", "Detalhe completo da falha: ", t);
                 }
             });
         });
+    }
+
+    // Método para validar se o e-mail contém formato correto (@ e .)
+    private boolean validarEmail(String email) {
+        return !email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches();
+    }
+
+    // Método para validar senha: Mínimo 6 caracteres, 1 maiúscula, 1 minúscula, 1 número e 1 '@'
+    private boolean validarSenha(String senha) {
+        String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{6,}$";
+        return Pattern.matches(regex, senha);
     }
 }
