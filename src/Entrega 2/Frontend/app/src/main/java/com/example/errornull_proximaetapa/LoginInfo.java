@@ -64,11 +64,19 @@ public class LoginInfo extends AppCompatActivity {
                 public void onResponse(Call<TokenResponse> call, Response<TokenResponse> response) {
                     if (response.isSuccessful() && response.body() != null) {
                         String token = response.body().getToken();
+
+                        // ==========================================
+                        // INTEGRAÇÃO DO USER SESSION MANAGER
+                        // ==========================================
+                        UserSessionManager session = new UserSessionManager(LoginInfo.this);
+                        // Guarda o e-mail e dados básicos na sessão local do telemóvel
+                        session.salvarDadosUtilizador(email, "Nome do Utilizador", "aluno");
+
                         Toast.makeText(LoginInfo.this, "Login efetuado com sucesso!", Toast.LENGTH_SHORT).show();
 
                         // Redireciona para a Tela de Perfil e fecha a tela de login
                         Intent intent = new Intent(LoginInfo.this, TelaPerfil.class);
-                        // Se precisares de passar o token para a tela de perfil, podes usar:
+                        // Se precisares de passar o token, podes usar:
                         // intent.putExtra("USER_TOKEN", token);
                         startActivity(intent);
                         finish();

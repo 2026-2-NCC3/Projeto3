@@ -118,7 +118,7 @@ public class Cadastro extends AppCompatActivity {
         api = retrofit.create(ApiService.class);
 
         btnCadastrar.setOnClickListener(v -> {
-            // Limpa erros anteriores
+            // Limpa erros anteriores visuais
             if (tilCpf != null) tilCpf.setError(null);
             if (tilNome != null) tilNome.setError(null);
             if (tilEmail != null) tilEmail.setError(null);
@@ -129,7 +129,7 @@ public class Cadastro extends AppCompatActivity {
             String email = inputEmail.getText().toString().trim();
             String senha = inputSenha.getText().toString().trim();
 
-            // Validações com feedback visual no TextInputLayout
+            // Validações do Front-end
             if (cpf.isEmpty()) {
                 if (tilCpf != null) tilCpf.setError("O CPF é obrigatório");
                 return;
@@ -144,7 +144,7 @@ public class Cadastro extends AppCompatActivity {
             }
             if (!validarSenha(senha)) {
                 if (textInputLayoutSenha != null) {
-                    textInputLayoutSenha.setError("Mín. 6 caracteres, 1 maiúscula, 1 minúscula, 1 número e 1 '@'");
+                    textInputLayoutSenha.setError("Mín. 6 carateres, 1 maiúscula, 1 minúscula, 1 número e 1 '@'");
                 }
                 return;
             }
@@ -178,7 +178,20 @@ public class Cadastro extends AppCompatActivity {
                         startActivity(new Intent(Cadastro.this, LoginInfo.class));
                         finish();
                     } else {
-                        Toast.makeText(Cadastro.this, "Erro ao cadastrar. Verifique os dados.", Toast.LENGTH_SHORT).show();
+                        // Tratamento inteligente de duplicidade vindo do Back-end
+                        try {
+                            String erroMsg = response.errorBody() != null ? response.errorBody().string() : "";
+                            
+                            if (erroMsg.contains("CPF")) {
+                                if (tilCpf != null) tilCpf.setError("Este CPF já está cadastrado!");
+                            } else if (erroMsg.contains("E-mail") || erroMsg.contains("email")) {
+                                if (tilEmail != null) tilEmail.setError("Este E-mail já está em uso!");
+                            } else {
+                                Toast.makeText(Cadastro.this, "Erro ao cadastrar. Verifique os dados.", Toast.LENGTH_SHORT).show();
+                            }
+                        } catch (Exception e) {
+                            Toast.makeText(Cadastro.this, "Erro: E-mail ou CPF já cadastrados no sistema!", Toast.LENGTH_LONG).show();
+                        }
                     }
                 }
 
@@ -191,12 +204,12 @@ public class Cadastro extends AppCompatActivity {
         });
     }
 
-    // Método para validar se o e-mail contém formato correto (@ e .)
+    // Método para validar formato do e-mail
     private boolean validarEmail(String email) {
         return !email.isEmpty() && Patterns.EMAIL_ADDRESS.matcher(email).matches();
     }
 
-    // Método para validar senha: Mínimo 6 caracteres, 1 maiúscula, 1 minúscula, 1 número e 1 '@'
+    // Método para validar regras de segurança da senha
     private boolean validarSenha(String senha) {
         String regex = "^(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=!]).{6,}$";
         return Pattern.matches(regex, senha);

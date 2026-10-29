@@ -1,132 +1,134 @@
 package com.br.projetoproximaetapa.service;
 
-import java.util.List;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-import org.springframework.security.authentication.AnonymousAuthenticationToken;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
-import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.stereotype.Service;
 import com.br.projetoproximaetapa.dto.RegistroDTO;
 import com.br.projetoproximaetapa.dto.UsuarioDto;
-import com.br.projetoproximaetapa.model.Administrador;
-import com.br.projetoproximaetapa.model.Aluno;
-import com.br.projetoproximaetapa.model.Professor;
+import com.br.projetoproximaetapa.model.*;
+import com.br.projetoproximaetapa.repository.*;
 import com.br.projetoproximaetapa.security.Token;
-import com.br.projetoproximaetapa.model.Usuario;
-import com.br.projetoproximaetapa.repository.IAdministrador;
-import com.br.projetoproximaetapa.repository.IAluno;
-import com.br.projetoproximaetapa.repository.IProfessor;
-import com.br.projetoproximaetapa.repository.IUsuario;
+import com.br.projetoproximaetapa.security.TokenUtil;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.password.PasswordEncoder;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.util.List;
 
 @Service
 public class UsuarioService {
 
     private static final Logger logger = LoggerFactory.getLogger(UsuarioService.class);
+    
+    @Autowired
+    private IUsuario usuarioRepository;
 
-    private final IUsuario usuarioRepository;
-    private final IAluno alunoRepository;
-    private final IProfessor professorRepository;
-    private final IAdministrador administradorRepository;
-    private final PasswordEncoder passwordEncoder;
+    @Autowired
+    private IAluno alunoRepository;
 
-    public UsuarioService(IUsuario usuarioRepository, IAluno alunoRepository, 
-                          IProfessor professorRepository, IAdministrador administradorRepository) {
-        this.usuarioRepository = usuarioRepository;
-        this.alunoRepository = alunoRepository;
-        this.professorRepository = professorRepository;
-        this.administradorRepository = administradorRepository;
-        this.passwordEncoder = new BCryptPasswordEncoder();
-    }
+    @Autowired
+    private IProfessor professorRepository;
+
+    @Autowired
+    private IAdministrador administradorRepository;
+
+    @Autowired
+    private PasswordEncoder passwordEncoder;
 
     public List<Usuario> listarUsuarios() {
-        logger.info("Listando todos os usuários cadastrados.");
         return usuarioRepository.findAll();
     }
 
-    public Usuario buscarUsuarioPorCpf(String cpf) {
-        logger.info("Buscando usuário pelo CPF: {}", cpf);
-        return usuarioRepository.findById(cpf).orElse(null);
-    }
-
+    @Transactional // Garante consistência: se falhar na subclasse, desfaz o usuario base no MySQL
     public Usuario cadastrarUsuarioCompleto(RegistroDTO dto) {
-        logger.info("Iniciando cadastro completo para o email: {} com tipo: {}", dto.getEmail(), dto.getTipoUsuario());
         
+        // VALIDAÇÃO DE DUPLICIDADE
+        //Verificação se o cpf existe
+        if (usuarioRepository.existsById(dto.getCpf())) {
+            logger.warn("Tentativa de cadastro falhou: CPF já cadastrado -> {}", dto.getCpf());
+            throw new RuntimeException("Erro: Este CPF já está cadastrado no sistema!");
+        }
+        //Verificação se o e-mail existe
+        if (usuarioRepository.findByEmail(dto.getEmail()) != null) {
+            logger.warn("Tentativa de cadastro falhou: E-mail já em uso -> {}", dto.getEmail());
+            throw new RuntimeException("Erro: Este E-mail já está em uso!");
+        }
+
+        //Salvar o Usuário Base
         Usuario usuario = new Usuario();
         usuario.setCpf(dto.getCpf());
         usuario.setNome(dto.getNome());
         usuario.setEmail(dto.getEmail());
-        usuario.setSenha(this.passwordEncoder.encode(dto.getSenha()));
-        
-        String tipo = dto.getTipoUsuario() != null ? dto.getTipoUsuario().toLowerCase() : "aluno";
-        usuario.setTipoUsuario(tipo);
+        usuario.setSenha(passwordEncoder.encode(dto.getSenha()));
+        usuario.setTipoUsuario(dto.getTipoUsuario().toLowerCase());
         
         Usuario usuarioSalvo = usuarioRepository.save(usuario);
 
-        if ("aluno".equals(tipo)) {
-            Aluno aluno = new Aluno();
-            aluno.setCpf(dto.getCpf());
-            aluno.setTelefoneAluno(dto.getTelefoneAluno());
-            aluno.setEscola(dto.getEscola());
-            aluno.setCidade(dto.getCidade());
-            aluno.setGrade(dto.getGrade());
-            alunoRepository.save(aluno);
-            logger.info("Aluno vinculado e salvo com sucesso: {}", dto.getCpf());
-        } else if ("professor".equals(tipo)) {
-            Professor professor = new Professor();
-            professor.setCpf(dto.getCpf());
-            professor.setTelefoneProfessor(dto.getTelefoneProfessor());
-            professor.setEspecialidade(dto.getEspecialidade());
-            professorRepository.save(professor);
-            logger.info("Professor vinculado e salvo com sucesso: {}", dto.getCpf());
-        } else if ("admin".equals(tipo)) {
-            Administrador admin = new Administrador();
-            admin.setCpf(dto.getCpf());
-            admin.setCargo(dto.getCargo() != null ? dto.getCargo() : "Administrador");
-            administradorRepository.save(admin);
-            logger.info("Administrador vinculado e salvo com sucesso: {}", dto.getCpf());
+        //Salvar na tabela específica dependendo do tipo enviado no DTO
+        String tipo = dto.getTipoUsuario().toLowerCase();
+        
+        switch (tipo) {
+            case "aluno":
+                Aluno aluno = new Aluno();
+                aluno.setCpf(dto.getCpf());
+                aluno.setTelefoneAluno(dto.getTelefoneAluno());
+                aluno.setEscola(dto.getEscola());
+                aluno.setCidade(dto.getCidade());
+                aluno.setGrade(dto.getGrade());
+                alunoRepository.save(aluno);
+                break;
+                
+            case "professor":
+                Professor professor = new Professor();
+                professor.setCpf(dto.getCpf());
+                professor.setTelefoneProfessor(dto.getTelefoneProfessor());
+                professor.setEspecialidade(dto.getEspecialidade());
+                professorRepository.save(professor);
+                break;
+
+            case "admin":
+            case "administrador":
+                Administrador admin = new Administrador();
+                admin.setCpf(dto.getCpf());
+                admin.setCargo(dto.getCargo());
+                administradorRepository.save(admin);
+                break;
+
+            default:
+                throw new RuntimeException("Tipo de usuário inválido: " + tipo);
         }
 
+        logger.info("Usuário cadastrado com sucesso: {} ({})", dto.getEmail(), tipo);
         return usuarioSalvo;
     }
 
-    public Usuario atualizarUsuario(Usuario usuario) {
-        logger.info("Atualizando dados do usuário com CPF: {}", usuario.getCpf());
-        if (usuario.getSenha() != null && !usuario.getSenha().startsWith("$2a$")) {
-            usuario.setSenha(this.passwordEncoder.encode(usuario.getSenha()));
-        }
-        return usuarioRepository.save(usuario);
-    }
-
-    public Boolean deletarUsuario(String cpf) {
-        logger.warn("Removendo usuário com CPF: {}", cpf);
-        usuarioRepository.deleteById(cpf);
-        return true;
-    }
-
-    public Token gerarToken(UsuarioDto usuarioDto) {
-        logger.info("Tentativa de autenticação para o email: {}", usuarioDto.getEmail());
-        Usuario usuario = usuarioRepository.findByEmail(usuarioDto.getEmail());
+    public Token gerarToken(UsuarioDto dto) {
+        Usuario usuario = usuarioRepository.findByEmail(dto.getEmail());
         
-        if (usuario != null && passwordEncoder.matches(usuarioDto.getSenha(), usuario.getSenha())) {
-            String tokenStr = com.br.projetoproximaetapa.security.TokenUtil.createToken(usuario);
-            logger.info("Autenticação bem-sucedida. Token gerado para: {}", usuario.getEmail());
-            return new Token(tokenStr);
+        // Valida se o usuário existe e se a senha criptografada confere
+        if (usuario != null && passwordEncoder.matches(dto.getSenha(), usuario.getSenha())) {
+            // Gera o token JWT real usando a tua classe TokenUtil
+            String tokenJwt = TokenUtil.createToken(usuario);
+            return new Token(tokenJwt); 
         }
         
-        logger.warn("Falha na autenticação. Credenciais inválidas para o email: {}", usuarioDto.getEmail());
+        logger.warn("Tentativa de login falhou para o e-mail: {}", dto.getEmail());
         return null;
     }
 
-    // Método auxiliar para obter o utilizador atualmente logado
-    private String getLogado() {
-        Authentication userLogado = SecurityContextHolder.getContext().getAuthentication();
-        if (userLogado != null && !(userLogado instanceof AnonymousAuthenticationToken)) {
-            return userLogado.getName();
-        }
-        return "Null";
+    public Usuario atualizarUsuario(Usuario usuario) {
+        return usuarioRepository.save(usuario);
+    }
+
+    @Transactional
+    public void deletarUsuario(String cpf) {
+        // Remove primeiro das tabelas filhas para respeitar restrições de chave estrangeira/integridade
+        if (alunoRepository.existsById(cpf)) alunoRepository.deleteById(cpf);
+        if (professorRepository.existsById(cpf)) professorRepository.deleteById(cpf);
+        if (administradorRepository.existsById(cpf)) administradorRepository.deleteById(cpf);
+        
+        usuarioRepository.deleteById(cpf);
+        logger.info("Usuário com CPF {} deletado com sucesso.", cpf);
     }
 }
