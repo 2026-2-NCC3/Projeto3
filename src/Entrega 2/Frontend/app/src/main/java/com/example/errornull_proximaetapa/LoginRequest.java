@@ -1,16 +1,17 @@
 package com.example.errornull_proximaetapa;
 
 public class LoginRequest {
-
-    private String nome_aluno;
+    private String email;
     private String senha;
 
-    public LoginRequest(String nome_aluno, String senha) {
-        this.nome_aluno = nome_aluno;
+    public LoginRequest(String email, String senha) {
+        this.email = email;
         this.senha = senha;
     }
 
-    //getters
-    public String getNome_aluno() { return nome_aluno; }
+    public String getEmail() { return email; }
+    public void setEmail(String email) { this.email = email; }
+
     public String getSenha() { return senha; }
+    public void setSenha(String senha) { this.senha = senha; }
 }

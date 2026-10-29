@@ -31,12 +31,7 @@
         android:theme="@style/Theme.ErrorNullProximaEtapa"
         android:usesCleartextTraffic="true" >
         <activity
-            android:name="com.example.errornull_proximaetapa.MainActivity"
-            android:exported="false" />
-        <activity android:name="com.example.errornull_proximaetapa.CursoInfo" />
-        <activity android:name="com.example.errornull_proximaetapa.LoginInfo" />
-        <activity
-            android:name="com.example.errornull_proximaetapa.Cadastro"
+            android:name="com.example.errornull_proximaetapa.LoginInfo"
             android:exported="true" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -44,6 +39,15 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <activity android:name="com.example.errornull_proximaetapa.Cadastro" />
+        <activity
+            android:name="com.example.errornull_proximaetapa.TelaPerfil"
+            android:exported="false" />
+        <activity
+            android:name="com.example.errornull_proximaetapa.TelaCurso"
+            android:exported="false" />
+        <activity android:name="com.example.errornull_proximaetapa.CursoInfo" />
+        <activity android:name="com.example.errornull_proximaetapa.TelaOportunidades" />
 
         <provider
             android:name="androidx.startup.InitializationProvider"
