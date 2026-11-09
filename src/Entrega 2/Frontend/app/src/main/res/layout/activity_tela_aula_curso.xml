@@ -77,26 +77,26 @@
                 android:background="@drawable/bg_pill_tranppurple" />
         </FrameLayout>
 
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:paddingStart="20dp"
-        android:paddingTop="12dp"
-        android:paddingEnd="20dp">
-        <Button
-            android:id="@+id/btnVoltarAula"
-            android:layout_width="wrap_content"
-            android:layout_height="38dp"
-            android:backgroundTint="@color/magenta"
-            android:paddingStart="14dp"
-            android:paddingTop="0dp"
-            android:paddingEnd="14dp"
-            android:paddingBottom="0dp"
-            android:text="⬅ Voltar"
-            android:textColor="@color/white"
-            android:textSize="12sp"
-            android:textStyle="bold" />
-    </LinearLayout>
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="20dp">
+            <Button
+                android:id="@+id/btnVoltarAula"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:backgroundTint="@color/magenta"
+                android:paddingStart="14dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="0dp"
+                android:text="⬅ Voltar"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:layout_width="match_parent"
@@ -188,6 +188,64 @@
                 android:textStyle="bold" />
         </LinearLayout>
 
+        <!-- Container de Status e QR Code do Aluno (Adicionado para corrigir o erro) -->
+        <LinearLayout
+            android:id="@+id/containerBotoesQrCodeAluno"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="24dp"
+            android:layout_marginTop="16dp"
+            android:layout_marginEnd="24dp"
+            android:background="@drawable/bg_card_curso"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txtStatusSessaoAlunoText"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Status da Sessão"
+                android:textColor="@color/grayish"
+                android:textSize="12sp" />
+
+            <TextView
+                android:id="@+id/txtStatusSessaoAlunoPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="6dp"
+                android:background="@drawable/bg_pill_yellow"
+                android:paddingStart="10dp"
+                android:paddingTop="3dp"
+                android:paddingEnd="10dp"
+                android:paddingBottom="3dp"
+                android:text="Aguardando Sessão"
+                android:textColor="@color/dark_indigo"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnGerarQrCodeEntradaAluno"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="12dp"
+                android:backgroundTint="@color/magenta"
+                android:text="Gerar QR Code de Entrada"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnGerarQrCodeSaidaAluno"
+                android:layout_width="match_parent"
+                android:layout_height="48dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/magenta"
+                android:text="Gerar QR Code de Saída"
+                android:textColor="@color/white"
+                android:textSize="13sp"
+                android:textStyle="bold" />
+        </LinearLayout>
 
         <LinearLayout
             android:id="@+id/btnAbrirForumDuvidas"
@@ -264,7 +322,6 @@
             android:layout_marginTop="12dp"
             android:layout_marginEnd="24dp"
             android:orientation="vertical" />
-
 
     </LinearLayout>
 </ScrollView>
