@@ -208,12 +208,36 @@ public class CursoInfo extends AppCompatActivity {
                 btnInscrever.setBackgroundTintList(ColorStateList.valueOf(getColor(R.color.mint)));
                 btnInscrever.setOnClickListener(v -> {
                     String emailAtual = UserSession.getUsuarioAtual(CursoInfo.this);
+                    String cpfAluno = sp.getString("cpf", "");
                     if (emailAtual.isEmpty() || "aluno@exemplo.com".equalsIgnoreCase(emailAtual) || "usuario_convidado".equalsIgnoreCase(emailAtual)) {
                         NotificationHelper.exibirToastCustomizado(getApplicationContext(), "🔒 Faça login ou cadastre-se para se inscrever nos cursos!");
                         Intent loginIntent = new Intent(CursoInfo.this, com.example.errornull_proximaetapa.auth.LoginInfo.class);
                         startActivity(loginIntent);
                         return;
                     }
+
+
+                if (cpfAluno == null || cpfAluno.trim().isEmpty()) {
+                    NotificationHelper.exibirToastCustomizado(
+                        getApplicationContext(),
+                        "CPF não encontrado. Verifique seu cadastro!"
+                    );
+                    return;
+                }
+
+
+                InscricaoRequest request = new InscricaoRequest(cpfAluno, cursoId);
+
+                btnInscrever.setEnabled(false);
+
+                
+
+                RetrofitClient.getApiService().inscreverAluno(request)
+                    .enqueue(new Callback<Void>() {
+                        @Override
+                        public void onResponse(Call<Void> call, Response<Void> response) {
+                            if (response.isSuccessful()) {
+
 
                     Set<String> setCursos = new HashSet<>(sp.getStringSet("lista_cursos_ids", new HashSet<>()));
                     setCursos.add(cursoId);
@@ -239,7 +263,34 @@ public class CursoInfo extends AppCompatActivity {
 
                     NotificationHelper.exibirToastCustomizado(getApplicationContext(), "🎓 " + msgConfirmacao);
 
-                    new Handler(Looper.getMainLooper()).postDelayed(this::finish, 400);
+                    
+                new Handler(Looper.getMainLooper()).postDelayed(
+                    CursoInfo.this::finish,
+                    400
+                );
+
+
+
+            } else {
+                btnInscrever.setEnabled(true);
+                NotificationHelper.exibirToastCustomizado(
+                    getApplicationContext(),
+                    "Erro ao inscrever. Código HTTP: " + response.code()
+                );
+            }
+        }
+
+                    @Override
+                    public void onFailure(Call<Void> call, Throwable t) {
+                        btnInscrever.setEnabled(true);
+                        android.util.Log.e("API_INSCRICAO", "Falha na inscrição", t);
+                        NotificationHelper.exibirToastCustomizado(
+                            getApplicationContext(),
+                            "Não foi possível conectar ao servidor."
+                        );
+                    }
+                });
+
                 });
             }
         }

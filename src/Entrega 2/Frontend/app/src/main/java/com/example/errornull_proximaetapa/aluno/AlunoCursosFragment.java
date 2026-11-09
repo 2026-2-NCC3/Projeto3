@@ -35,6 +35,14 @@ import com.example.errornull_proximaetapa.curso.PerfilFaculdadeActivity;
 import com.example.errornull_proximaetapa.R;
 import com.example.errornull_proximaetapa.curso.TelaAulaCurso;
 import com.example.errornull_proximaetapa.UserSession;
+import com.example.errornull_proximaetapa.auth.RetrofitClient;
+
+import com.example.errornull_proximaetapa.auth.ApiService;
+import com.example.errornull_proximaetapa.auth.CursoResponse;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 import java.util.ArrayList;
 import java.util.Arrays;
@@ -231,7 +239,62 @@ public class AlunoCursosFragment extends Fragment {
         edGeral.putStringSet("lista_cursos_publicos_ids", setGlobalCursos).apply();
     }
 
-    private void renderizarPrincipaisCursos() {
+
+        private void buscarCursosDaApi(ApiService apiService) {
+
+            apiService.listarCursos().enqueue(
+                new Callback<List<CursoResponse>>() {
+
+                    @Override
+                    public void onResponse(
+                            Call<List<CursoResponse>> call,
+                            Response<List<CursoResponse>> response) {
+
+                        if (!isAdded()) return;
+
+                        if (response.isSuccessful()
+                                && response.body() != null) {
+
+                            List<CursoResponse> cursos = response.body();
+
+                            android.util.Log.d(
+                                "API_CURSOS",
+                                "Cursos recebidos: " + cursos.size()
+                            );
+
+                            for (CursoResponse curso : cursos) {
+                                android.util.Log.d(
+                                    "API_CURSOS",
+                                    curso.getIdCurso() + " - "
+                                        + curso.getNomeCurso()
+                                );
+                            }
+
+                        } else {
+                            android.util.Log.e(
+                                "API_CURSOS",
+                                "Erro HTTP: " + response.code()
+                            );
+                        }
+                    }
+
+                    @Override
+                    public void onFailure(
+                            Call<List<CursoResponse>> call,
+                            Throwable t) {
+
+                        android.util.Log.e(
+                            "API_CURSOS",
+                            "Falha na consulta",
+                            t
+                        );
+                    }
+                }
+            );
+        }
+
+
+     private void renderizarPrincipaisCursos(){
         View contCursosView = getView() != null ? getView().findViewById(R.id.contCursosPublicados) : null;
         if (contCursosView == null || !(contCursosView instanceof ViewGroup) || getContext() == null) return;
         ViewGroup container = (ViewGroup) contCursosView;
@@ -1136,6 +1199,7 @@ public class AlunoCursosFragment extends Fragment {
     @Override
     public void onResume() {
         super.onResume();
+        buscarCursosDaApi(RetrofitClient.getApiService());
         configurarFerramentasAdmin();
         atualizarCursosDisponiveis();
         renderizarPrincipaisCursos();
