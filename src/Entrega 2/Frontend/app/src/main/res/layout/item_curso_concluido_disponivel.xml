@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="8dp"
+    android:background="@drawable/bg_card_sobreposicao1"
+    android:gravity="center_vertical"
+    android:orientation="horizontal"
+    android:elevation="4dp"
+    android:padding="10dp">
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtNomeCursoConcluido"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Nome do Curso"
+            android:textColor="@color/light_purple"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Concluído 100%"
+            android:textColor="@color/mint"
+            android:textSize="11sp"
+            android:textStyle="bold" />
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/btnAdicionarAoCard"
+        android:layout_width="50dp"
+        android:layout_height="36dp"
+        android:backgroundTint="@color/transparent_purple"
+        android:paddingStart="12dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="12dp"
+        android:paddingBottom="0dp"
+        android:text="➕"
+        android:textColor="@color/lavender"
+        android:textSize="11sp"
+        android:textStyle="bold"
+        style="@style/Widget.MaterialComponents.Button.TextButton"/>
+</LinearLayout>

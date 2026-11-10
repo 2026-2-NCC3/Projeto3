@@ -13,21 +13,26 @@
         android:supportsRtl="true"
         android:usesCleartextTraffic="true"
         android:theme="@style/Theme.ErrorNullProximaEtapa">
-        <activity
-            android:name=".MainActivity"
-            android:exported="false" />
-
-        <activity android:name=".CursoInfo"/>
-        <activity android:name=".LoginInfo"/>
 
         <activity
-            android:name=".Cadastro"
+            android:name=".auth.LoginInfo"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".auth.Cadastro" />
+        <activity android:name=".MainActivity" android:exported="false" />
+        <activity android:name=".curso.CursoInfo" />
+        <activity android:name=".Questionario" />
+        <activity android:name=".administrador.AdminActivity" />
+        <activity android:name=".professor.ProfessorActivity" />
+        <activity android:name=".aluno.ListaEventosActivity" />
+        <activity android:name=".curso.PerfilFaculdadeActivity" />
+        <activity android:name=".curso.TelaAulaCurso" />
+
     </application>
 
 </manifest>

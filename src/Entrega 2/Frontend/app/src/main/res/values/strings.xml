@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Error Null - Proxima Etapa</string>
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="boas_vindas_format">Seja bem-vindo(a), %1$s!</string>
 </resources>

@@ -1,0 +1,173 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:background="@drawable/bg_card_sobreposicao2"
+    android:elevation="8dp"
+    android:padding="20dp">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTituloGestaoPresenca"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Gestão de Sessão de Aula"
+            android:textColor="@color/dark_indigo"
+            android:textSize="18sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtStatusSessaoProfText"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="Abra uma sessão de aula para liberar os registros de entrada e saída dos alunos:"
+            android:textColor="@color/dark_gray"
+            android:textSize="12sp" />
+
+        <!-- Status da Sessão Ativa -->
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:background="@drawable/bg_card_sobreposicao2"
+            android:elevation="2dp"
+            android:orientation="vertical"
+            android:padding="16dp">
+
+            <TextView
+                android:id="@+id/txtSessaoStatusPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_purple"
+                android:paddingStart="12dp"
+                android:paddingTop="4dp"
+                android:paddingEnd="12dp"
+                android:paddingBottom="4dp"
+                android:text="Sessão Fechada"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtDetalhesSessaoAtiva"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Nenhuma sessão de aula em andamento para esta disciplina."
+                android:textColor="@color/dark_indigo"
+                android:textSize="13sp" />
+        </LinearLayout>
+
+        <!-- Botão Abrir / Criar Sessão de Aula -->
+        <Button
+            android:id="@+id/btnAbrirNovaSessaoAulaProf"
+            android:layout_width="match_parent"
+            android:layout_height="46dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/yellow"
+            android:text="▶️ Iniciar Nova Sessão de Aula"
+            android:textColor="@color/dark_indigo"
+            android:textSize="13sp"
+            android:textStyle="bold" />
+
+        <!-- Controles de Liberação de Entrada e Saída -->
+        <LinearLayout
+            android:id="@+id/containerControlesSessaoAtivaProf"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:orientation="vertical"
+            android:visibility="gone">
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Liberação de Registro por QR Code:"
+                android:textColor="@color/purple"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:orientation="horizontal">
+
+                <Button
+                    android:id="@+id/btnToggleLiberarEntradaProf"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginEnd="6dp"
+                    android:backgroundTint="@color/mint"
+                    android:text="🔓 Liberar Entrada"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+
+                <Button
+                    android:id="@+id/btnToggleLiberarSaidaProf"
+                    android:layout_width="0dp"
+                    android:layout_height="44dp"
+                    android:layout_weight="1"
+                    android:layout_marginStart="6dp"
+                    android:backgroundTint="@color/mint"
+                    android:text="🔓 Liberar Saída"
+                    android:textColor="@color/white"
+                    android:textSize="11sp"
+                    android:textStyle="bold" />
+            </LinearLayout>
+
+            <Button
+                android:id="@+id/btnAbrirScannerQrProf"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/mint"
+                android:text="📷 Scanner / Leitor de QR Code"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnVerListaPresencaTurmaProf"
+                android:layout_width="match_parent"
+                android:layout_height="44dp"
+                android:layout_marginTop="8dp"
+                android:backgroundTint="@color/yellow"
+                android:text="📋 Ver Lista de Presença da Turma"
+                android:textColor="@color/dark_indigo"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <Button
+                android:id="@+id/btnEncerrarSessaoAulaProf"
+                android:layout_width="match_parent"
+                android:layout_height="42dp"
+                android:layout_marginTop="10dp"
+                android:backgroundTint="@color/dark_indigo"
+                android:text="⏹️ Encerrar Sessão de Aula"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+        <!-- Botão Fechar -->
+        <Button
+            android:id="@+id/btnFecharGestaoPresencaProf"
+            android:layout_width="match_parent"
+            android:layout_height="42dp"
+            android:layout_marginTop="16dp"
+            android:backgroundTint="@color/dark_gray"
+            android:text="Fechar"
+            android:textColor="@color/white"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+</ScrollView>

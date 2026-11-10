@@ -1,0 +1,514 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/white2"
+    tools:context=".Questionario"
+    android:id="@+id/telaQuestionario">
+
+    <FrameLayout
+        android:id="@+id/headerQuestionario"
+        android:layout_width="match_parent"
+        android:layout_height="60dp"
+        android:background="@drawable/bg_header"
+        android:elevation="2dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
+
+        <ImageView
+            android:id="@+id/imgLogo"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:src="@drawable/logo_proxima_etapa" />
+
+        <View
+            android:layout_width="38dp"
+            android:layout_height="3dp"
+            android:layout_gravity="bottom|center_horizontal"
+            android:layout_marginBottom="4dp"
+            android:background="@drawable/bg_pill_tranppurple" />
+    </FrameLayout>
+
+    <Button
+        android:id="@+id/btnVoltar"
+        android:layout_width="wrap_content"
+        android:layout_height="38dp"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="12dp"
+        android:backgroundTint="@color/magenta"
+        android:paddingStart="14dp"
+        android:paddingTop="0dp"
+        android:paddingEnd="14dp"
+        android:paddingBottom="0dp"
+        android:text="⬅ Voltar"
+        android:textColor="@color/white"
+        android:textSize="12sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/headerQuestionario" />
+
+    <ScrollView
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        android:layout_marginTop="8dp"
+        android:fillViewport="true"
+        app:layout_constraintBottom_toTopOf="@id/btnEnviar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/btnVoltar">
+
+        <androidx.constraintlayout.widget.ConstraintLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="16dp">
+
+            <!-- Pergunta 1 -->
+            <TextView
+                android:id="@+id/tvQ1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:text="1. Qual ambiente de trabalho você prefere?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <RadioGroup
+                android:id="@+id/rgAmbiente"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ1">
+                <RadioButton android:id="@+id/rbEscritorio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Escritório organizado e estruturado" />
+                <RadioButton android:id="@+id/rbHomeOffice" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Flexibilidade (Híbrido ou Home Office)" />
+                <RadioButton android:id="@+id/rbExterno" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ambientes dinâmicos e externos" />
+            </RadioGroup>
+
+            <!-- Pergunta 2 -->
+            <TextView
+                android:id="@+id/tvQ2"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="2. Quais áreas despertam seu interesse?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgAmbiente" />
+
+            <CheckBox
+                android:id="@+id/cbTecnologia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Tecnologia e Inovação"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ2" />
+
+            <CheckBox
+                android:id="@+id/cbSaude"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Saúde e Bem-estar"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cbTecnologia" />
+
+            <CheckBox
+                android:id="@+id/cbArtes"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Artes e Criatividade"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cbSaude" />
+
+            <CheckBox
+                android:id="@+id/cbNegocios"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="4dp"
+                android:text="Negócios e Gestão"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cbArtes" />
+
+            <!-- Pergunta 3 -->
+            <TextView
+                android:id="@+id/tvQ3"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="3. Como você lida com desafios técnicos?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/cbNegocios" />
+
+            <RadioGroup
+                android:id="@+id/rgDesafios"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ3">
+                <RadioButton android:id="@+id/rbLogica" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Analiso friamente usando a lógica" />
+                <RadioButton android:id="@+id/rbEquipe" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Busco ajuda e colaboração da equipe" />
+                <RadioButton android:id="@+id/rbCriatividade" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Tento encontrar uma solução criativa" />
+            </RadioGroup>
+
+            <!-- Pergunta 4 -->
+            <TextView
+                android:id="@+id/tvQ4"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="4. O que mais te motiva no trabalho?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgDesafios" />
+
+            <RadioGroup
+                android:id="@+id/rgMotivacao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ4">
+                <RadioButton android:id="@+id/rbImpacto" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="O impacto positivo na sociedade" />
+                <RadioButton android:id="@+id/rbCrescimento" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="O reconhecimento e crescimento" />
+                <RadioButton android:id="@+id/rbConhecimento" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Aprender coisas novas constantemente" />
+            </RadioGroup>
+
+            <!-- Pergunta 5 -->
+            <TextView
+                android:id="@+id/tvQ5"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="5. Como você organiza seu dia?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgMotivacao" />
+
+            <RadioGroup
+                android:id="@+id/rgRotina"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ5">
+                <RadioButton android:id="@+id/rbAgenda" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Seguir uma agenda rigorosa" />
+                <RadioButton android:id="@+id/rbAdaptavel" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Adaptar-me conforme a demanda" />
+                <RadioButton android:id="@+id/rbNatural" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Resolver as coisas conforme surgem" />
+            </RadioGroup>
+
+            <!-- Pergunta 6 -->
+            <TextView
+                android:id="@+id/tvQ6"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="6. Qual papel você assume em equipe?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgRotina" />
+
+            <RadioGroup
+                android:id="@+id/rgGrupo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ6">
+                <RadioButton android:id="@+id/rbLider" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Liderança e tomada de decisão" />
+                <RadioButton android:id="@+id/rbExecutor" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Execução técnica e foco na entrega" />
+                <RadioButton android:id="@+id/rbApoio" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Garantir a boa convivência e harmonia" />
+            </RadioGroup>
+
+            <!-- Pergunta 7 -->
+            <TextView
+                android:id="@+id/tvQ7"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="7. Qual sua relação com inovações?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgGrupo" />
+
+            <RadioGroup
+                android:id="@+id/rgTech"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ7">
+                <RadioButton android:id="@+id/rbEarlyAdopter" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Busco sempre o que há de mais novo" />
+                <RadioButton android:id="@+id/rbSegurancaTech" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Prefiro métodos já consolidados" />
+            </RadioGroup>
+
+            <!-- Pergunta 8 -->
+            <TextView
+                android:id="@+id/tvQ8"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="8. Como você se sente ao falar em público?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgTech" />
+
+            <RadioGroup
+                android:id="@+id/rgPublico"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ8">
+                <RadioButton android:id="@+id/rbFaloBem" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sinto-me confortável e comunicativo" />
+                <RadioButton android:id="@+id/rbIndividual" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Prefiro comunicação escrita ou individual" />
+            </RadioGroup>
+
+            <!-- Pergunta 9 -->
+            <TextView
+                android:id="@+id/tvQ9"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="9. Como você prefere tomar decisões?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgPublico" />
+
+            <RadioGroup
+                android:id="@+id/rgDecisao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ9">
+                <RadioButton android:id="@+id/rbFatos" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Baseado em fatos e dados concretos" />
+                <RadioButton android:id="@+id/rbIntuicao" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Baseado em intuição e valores pessoais" />
+            </RadioGroup>
+
+            <!-- Pergunta 10 -->
+            <TextView
+                android:id="@+id/tvQ10"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="10. Onde você quer estar em 5 anos?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgDecisao" />
+
+            <RadioGroup
+                android:id="@+id/rgFuturo"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ10">
+                <RadioButton android:id="@+id/rbReferencia" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Sendo referência técnica na minha área" />
+                <RadioButton android:id="@+id/rbGestaoFuturo" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Liderando projetos e pessoas" />
+                <RadioButton android:id="@+id/rbDono" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Dono do meu próprio negócio" />
+            </RadioGroup>
+
+            <!-- Pergunta 11 -->
+            <TextView
+                android:id="@+id/tvQ11"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="11. Qual atividade te dá mais energia?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgFuturo" />
+
+            <RadioGroup
+                android:id="@+id/rgEnergia"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ11">
+                <RadioButton android:id="@+id/rbAnalise" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Organizar informações e processos" />
+                <RadioButton android:id="@+id/rbOrientacao" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Orientar e conversar com pessoas" />
+                <RadioButton android:id="@+id/rbCriacao" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Imaginar e criar coisas novas" />
+            </RadioGroup>
+
+            <!-- Pergunta 12 -->
+            <TextView
+                android:id="@+id/tvQ12"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="12. Como você prefere aprender novas habilidades?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgEnergia" />
+
+            <RadioGroup
+                android:id="@+id/rgEstiloAprender"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ12">
+                <RadioButton android:id="@+id/rbPratico" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Na prática (tentativa e erro)" />
+                <RadioButton android:id="@+id/rbTeoria" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Estudando a teoria e fundamentos" />
+            </RadioGroup>
+
+            <!-- Pergunta 13 -->
+            <TextView
+                android:id="@+id/tvQ13"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="13. Se tivesse tempo livre em um projeto, você:"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgEstiloAprender" />
+
+            <RadioGroup
+                android:id="@+id/rgTempoLivre"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ13">
+                <RadioButton android:id="@+id/rbOtimiza" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Organizaria as tarefas pendentes" />
+                <RadioButton android:id="@+id/rbAjuda" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Ajudaria um colega sobrecarregado" />
+                <RadioButton android:id="@+id/rbPesquisa" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Pesquisaria novas tecnologias e tendências" />
+            </RadioGroup>
+
+            <!-- Pergunta 14 -->
+            <TextView
+                android:id="@+id/tvQ14"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="14. No que você costuma se destacar naturalmente?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgTempoLivre" />
+
+            <RadioGroup
+                android:id="@+id/rgDestaque"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ14">
+                <RadioButton android:id="@+id/rbPrecisao" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Precisão e atenção aos detalhes" />
+                <RadioButton android:id="@+id/rbOriginalidade" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Originalidade e pensamento fora da caixa" />
+                <RadioButton android:id="@+id/rbInfluencia" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Persuasão e habilidade de influência" />
+            </RadioGroup>
+
+            <!-- Pergunta 15 -->
+            <TextView
+                android:id="@+id/tvQ15"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="24dp"
+                android:text="15. Qual sua prioridade máxima em um projeto?"
+                android:textColor="@color/black"
+                android:textSize="18sp"
+                android:textStyle="bold"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/rgDestaque" />
+
+            <RadioGroup
+                android:id="@+id/rgPrioridade"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:layout_marginBottom="32dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/tvQ15">
+                <RadioButton android:id="@+id/rbResultados" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Entregar resultados concretos e úteis" />
+                <RadioButton android:id="@+id/rbInova" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Explorar algo totalmente novo" />
+                <RadioButton android:id="@+id/rbBemEstar" android:layout_width="match_parent" android:layout_height="wrap_content" android:text="Garantir o bem-estar e inclusão da equipe" />
+            </RadioGroup>
+
+        </androidx.constraintlayout.widget.ConstraintLayout>
+    </ScrollView>
+
+    <Button
+        android:id="@+id/btnEnviar"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:backgroundTint="@color/limegreen"
+        android:text="Finalizar Avaliação"
+        android:textColor="@color/black"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

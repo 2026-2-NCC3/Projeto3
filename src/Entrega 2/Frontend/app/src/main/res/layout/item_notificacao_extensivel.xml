@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/cardItemNotificacao"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginBottom="10dp"
+    android:background="@drawable/bg_card_sobreposicao1"
+    android:clickable="true"
+    android:focusable="true"
+    android:elevation="2dp"
+    android:orientation="horizontal"
+    android:padding="14dp">
+
+    <FrameLayout
+        android:id="@+id/iconContainerNotif"
+        android:layout_width="44dp"
+        android:layout_height="44dp"
+        android:layout_gravity="top"
+        android:background="@drawable/bg_avatar_circle"
+        android:backgroundTint="@color/transparent_yellow">
+
+        <TextView
+            android:id="@+id/txtIconeEmojiNotif"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="🎓"
+            android:textSize="20sp" />
+    </FrameLayout>
+
+
+    <LinearLayout
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
+        android:layout_marginStart="12dp"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/txtTituloNotificacao"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Novo curso disponível!"
+            android:textColor="@color/dark_indigo"
+            android:textSize="14sp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:id="@+id/txtMensagemNotificacao"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="4dp"
+            android:text="O curso acabou de ser publicado na plataforma. Reserve sua vaga agora mesmo!"
+            android:textColor="@color/dark_gray"
+            android:textSize="12sp"
+            android:lineSpacingExtra="2dp" />
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="8dp"
+            android:gravity="center_vertical"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/txtTempoNotificacao"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="há 0 dias"
+                android:textColor="@color/dark_gray"
+                android:textSize="11sp" />
+
+            <TextView
+                android:id="@+id/btnVerAcaoNotificacao"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:clickable="true"
+                android:focusable="true"
+                android:text="Ver →"
+                android:textColor="@color/mint"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtStatusLida"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="10dp"
+                android:text="✓ lida"
+                android:textColor="@color/dark_gray"
+                android:textSize="11sp" />
+        </LinearLayout>
+    </LinearLayout>
+
+</LinearLayout>

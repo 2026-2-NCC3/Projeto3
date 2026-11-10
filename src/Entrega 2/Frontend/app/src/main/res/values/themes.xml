@@ -1,9 +1,18 @@
 <resources xmlns:tools="http://schemas.android.com/tools">
     <!-- Base application theme. -->
-    <style name="Base.Theme.ErrorNullProximaEtapa" parent="Theme.Material3.DayNight.NoActionBar">
+    <style name="Base.Theme.ErrorNullProximaEtapa" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <!-- Customize your light theme here. -->
-        <!-- <item name="colorPrimary">@color/my_light_primary</item> -->
+        <item name="colorPrimary">@color/white2</item>
+        <item name="colorPrimaryVariant">@color/white2</item>
     </style>
 
     <style name="Theme.ErrorNullProximaEtapa" parent="Base.Theme.ErrorNullProximaEtapa" />
+
+    <style name="ShapeAppearance.App.CarouselBottomCorners" parent="ShapeAppearance.MaterialComponents.SmallComponent">
+        <item name="cornerFamily">rounded</item>
+        <item name="cornerSizeTopLeft">0dp</item>
+        <item name="cornerSizeTopRight">0dp</item>
+        <item name="cornerSizeBottomLeft">150dp</item>
+        <item name="cornerSizeBottomRight">150dp</item>
+    </style>
 </resources>

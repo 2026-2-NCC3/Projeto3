@@ -1,63 +1,386 @@
 <?xml version="1.0" encoding="utf-8"?>
-<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".CursoInfo"
-    android:background="@color/white2">
+    android:fillViewport="true"
+    android:clipToPadding="false"
+    android:paddingBottom="60dp"
+    android:background="@color/white2"
+    tools:context=".curso.CursoInfo">
 
-    <TextView
-        android:id="@+id/GeneralInfo"
-        android:textColor="@color/green"
-        android:layout_width="wrap_content"
+    <LinearLayout
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Detalhes do Curso!"
-        android:textSize="35dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        android:orientation="vertical">
 
-    <ImageView
-        android:id="@+id/imgCurso"
-        android:layout_width="120dp"
-        android:layout_height="90dp"
-        android:layout_marginTop="40dp"
-        app:layout_constraintTop_toBottomOf="@+id/GeneralInfo"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintBottom_toTopOf="@+id/cursoInfo"
-        />
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="60dp"
+            android:background="@drawable/bg_header"
+            android:elevation="2dp">
 
-    <TextView
-        android:id="@+id/cursoInfo"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text=" "
-        android:textSize="20dp"
-        android:layout_marginTop="30dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/imgCurso"
-        app:layout_constraintBottom_toTopOf="@id/btnVoltar"
-        android:layout_marginBottom="20dp"
-        />
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_margin="10dp"
+                android:src="@drawable/logo_proxima_etapa"/>
 
-    <Button
-        android:id="@+id/btnVoltar"
-        android:backgroundTint="@color/purple"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Voltar"
-        android:layout_marginTop="20dp"
-        android:layout_marginLeft="30dp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/cursoInfo"
-        app:layout_goneMarginTop="20dp"
-        android:layout_marginRight="20dp"
-        />
+            <FrameLayout
+                android:id="@+id/btnSininhoNotificacoes"
+                android:layout_width="34dp"
+                android:layout_height="44dp"
+                android:layout_gravity="end|center_vertical"
+                android:layout_marginEnd="12dp"
+                android:clickable="true"
+                android:focusable="true">
 
-</androidx.constraintlayout.widget.ConstraintLayout>
+                <ImageView
+                    android:id="@+id/iconNotifications"
+                    android:layout_width="34dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="12dp"
+                    app:srcCompat="@drawable/icon_round_notifications"
+                    app:tint="@color/yellow"
+                    android:contentDescription="Off" />
+
+                <ImageView
+                    android:id="@+id/iconNotificationsActive"
+                    android:layout_width="34dp"
+                    android:layout_height="44dp"
+                    android:layout_marginEnd="12dp"
+                    app:srcCompat="@drawable/icon_round_notifications_active"
+                    app:tint="@color/yellow"
+                    android:contentDescription="On"
+                    android:visibility="gone" />
+
+                <TextView
+                    android:id="@+id/badgeSininhoQtd"
+                    android:layout_width="12dp"
+                    android:layout_height="12dp"
+                    android:layout_gravity="top|end"
+                    android:background="@drawable/bg_pill_red"
+                    android:gravity="center"
+                    android:text="1"
+                    android:textColor="@color/white"
+                    android:textSize="9sp"
+                    android:textStyle="bold"
+                    android:visibility="gone" />
+            </FrameLayout>
+
+            <View
+                android:layout_width="38dp"
+                android:layout_height="3dp"
+                android:layout_gravity="bottom|center_horizontal"
+                android:layout_marginBottom="4dp"
+                android:paddingTop="10dp"
+                android:background="@drawable/bg_pill_tranppurple" />
+        </FrameLayout>
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:paddingStart="20dp"
+            android:paddingTop="12dp"
+            android:paddingEnd="20dp">
+
+            <Button
+                android:id="@+id/btnVoltar"
+                android:layout_width="wrap_content"
+                android:layout_height="38dp"
+                android:backgroundTint="@color/magenta"
+                android:paddingStart="14dp"
+                android:paddingTop="0dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="0dp"
+                android:text="⬅ Voltar"
+                android:textColor="@color/white"
+                android:textSize="12sp"
+                android:textStyle="bold" />
+        </LinearLayout>
+
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:paddingStart="20dp"
+            android:paddingEnd="20dp"
+            android:paddingTop="8dp">
+
+
+            <TextView
+                android:id="@+id/txtFaculdadeHeaderPill"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:background="@drawable/bg_pill_purple"
+                android:paddingStart="14dp"
+                android:paddingTop="5dp"
+                android:paddingEnd="14dp"
+                android:paddingBottom="5dp"
+                android:text="Oferecido por USP"
+                android:textColor="@color/white"
+                android:textSize="11sp"
+                android:textStyle="bold" />
+
+            <TextView
+                android:id="@+id/txtNomeCursoTitle"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="8dp"
+                android:text="Desenvolvimento Web &amp; TI"
+                android:textColor="@color/dark_indigo"
+                android:textSize="22sp"
+                android:textStyle="bold" />
+
+            <!-- Poster / Banner do Curso -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="200dp"
+                android:layout_marginTop="14dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="4dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/yellow">
+
+                <ImageView
+                    android:id="@+id/imgCurso"
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:scaleType="centerCrop"
+                    android:src="@drawable/logo_proxima_etapa"
+                    android:contentDescription="Poster da Disciplina" />
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- CARD DE INSCRIÇÃO & VAGAS -->
+            <com.google.android.material.card.MaterialCardView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="18dp"
+                app:cardCornerRadius="20dp"
+                app:cardElevation="3dp"
+                app:strokeWidth="1dp"
+                app:strokeColor="@color/yellow">
+
+                <LinearLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:background="@drawable/bg_card_sobreposicao1"
+                    android:orientation="vertical"
+                    android:padding="18dp">
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="Investimento:"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="12sp" />
+
+                    <TextView
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:text="GRATUITO"
+                        android:textColor="@color/mint"
+                        android:textSize="20sp"
+                        android:textStyle="bold" />
+
+                    <!-- Vagas e Barra de Progresso de Vagas -->
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:gravity="center_vertical"
+                        android:orientation="horizontal">
+
+                        <TextView
+                            android:layout_width="0dp"
+                            android:layout_height="wrap_content"
+                            android:layout_weight="1"
+                            android:text="Vagas da Turma:"
+                            android:textColor="@color/dark_indigo"
+                            android:textSize="12sp"
+                            android:textStyle="bold" />
+
+                        <TextView
+                            android:id="@+id/txtVagasStatus"
+                            android:layout_width="wrap_content"
+                            android:layout_height="wrap_content"
+                            android:text="10 disponíveis (50/60)"
+                            android:textColor="@color/dark_yellow"
+                            android:textSize="11sp"
+                            android:textStyle="bold" />
+                    </LinearLayout>
+
+                    <ProgressBar
+                        android:id="@+id/pbVagasCurso"
+                        style="?android:attr/progressBarStyleHorizontal"
+                        android:layout_width="match_parent"
+                        android:layout_height="8dp"
+                        android:layout_marginTop="6dp"
+                        android:max="60"
+                        android:progress="50"
+                        android:progressTint="@color/mint" />
+
+                    <!-- Pílula de Pontos / Certificação -->
+                    <TextView
+                        android:id="@+id/txtPontosParticipar"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="14dp"
+                        android:background="@drawable/bg_pill_purple"
+                        android:gravity="center"
+                        android:padding="8dp"
+                        android:text="Certificação e Carga Horária Válida"
+                        android:textColor="@color/yellow"
+                        android:textSize="12sp"
+                        android:textStyle="bold" />
+
+                    <!-- Barra de Progresso do Aluno no Curso Inscrito -->
+                    <LinearLayout
+                        android:id="@+id/containerProgressoAlunoCurso"
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="12dp"
+                        android:background="@drawable/bg_card_sobreposicao2"
+                        android:orientation="vertical"
+                        android:padding="12dp"
+                        android:visibility="gone">
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:gravity="center_vertical"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:text="Seu Progresso nas Aulas:"
+                                android:textColor="@color/dark_indigo"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+
+                            <TextView
+                                android:id="@+id/txtPorcentagemProgressoCursoInfo"
+                                android:layout_width="wrap_content"
+                                android:layout_height="wrap_content"
+                                android:text="0% Concluído"
+                                android:textColor="@color/purple"
+                                android:textSize="12sp"
+                                android:textStyle="bold" />
+                        </LinearLayout>
+
+                        <ProgressBar
+                            android:id="@+id/pbProgressoAulasCursoInfo"
+                            style="?android:attr/progressBarStyleHorizontal"
+                            android:layout_width="match_parent"
+                            android:layout_height="10dp"
+                            android:layout_marginTop="6dp"
+                            android:max="100"
+                            android:progress="0"
+                            android:progressTint="@color/purple" />
+                    </LinearLayout>
+
+                    <!-- Botão de Inscrição Verde -->
+                    <Button
+                        android:id="@+id/btnInscrever"
+                        android:layout_width="match_parent"
+                        android:layout_height="48dp"
+                        android:layout_marginTop="14dp"
+                        android:backgroundTint="@color/mint"
+                        android:text="Reservar Vaga"
+                        android:textColor="@color/white"
+                        android:textSize="14sp"
+                        android:textStyle="bold" />
+
+                    <TextView
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="10dp"
+                        android:gravity="center"
+                        android:text="Certificado Incluso • Emissão após a conclusão das atividades"
+                        android:textColor="@color/dark_gray"
+                        android:textSize="11sp" />
+                </LinearLayout>
+            </com.google.android.material.card.MaterialCardView>
+
+            <!-- CARD INFORMAÇÕES DO EVENTO / AULAS -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_card_sobreposicao2"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Informações da Disciplina"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/txtDiasAulasDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="Dias de Aula: Terça, Quinta e Sábado"
+                    android:textColor="@color/dark_indigo"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtCargaHorariaDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Horário e Carga Horária: 14:00 às 17:00 (100 horas)"
+                    android:textColor="@color/dark_indigo"
+                    android:textSize="13sp" />
+
+                <TextView
+                    android:id="@+id/txtLocalDetalhe"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="4dp"
+                    android:text="Localização: Campus Universitário &amp; Plataforma Online"
+                    android:textColor="@color/dark_indigo"
+                    android:textSize="13sp" />
+            </LinearLayout>
+
+            <!-- CARD PROGRAMA DO CURSO -->
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:background="@drawable/bg_card_sobreposicao1"
+                android:elevation="2dp"
+                android:orientation="vertical"
+                android:padding="16dp">
+
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="Objetivos de Aprendizado e Programa:"
+                    android:textColor="@color/purple"
+                    android:textSize="14sp"
+                    android:textStyle="bold" />
+
+                <TextView
+                    android:id="@+id/cursoInfo"
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_marginTop="8dp"
+                    android:text="• Conteúdo prático ministrado por docentes de referência\n• Networking acadêmico e profissional\n• Atividades aplicadas em laboratório e projetos virtuais\n• Certificação oficial reconhecida no ambiente acadêmico"
+                    android:textColor="@color/dark_indigo"
+                    android:textSize="13sp"
+                    android:lineSpacingExtra="4dp" />
+            </LinearLayout>
+
+        </LinearLayout>
+    </LinearLayout>
+</ScrollView>
