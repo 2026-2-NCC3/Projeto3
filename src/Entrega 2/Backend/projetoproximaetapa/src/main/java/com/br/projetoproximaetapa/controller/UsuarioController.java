@@ -43,8 +43,9 @@ public class UsuarioController {
         return ResponseEntity.status(HttpStatus.FORBIDDEN).build();
     }
 
-    @PutMapping
-    public ResponseEntity<Usuario> atualizarUsuario(@Valid @RequestBody Usuario usuario) {
+    @PutMapping("/{cpf}")
+    public ResponseEntity<Usuario> atualizarUsuario(@PathVariable String cpf, @Valid @RequestBody Usuario usuario) {
+        usuario.setCpf(cpf);
         return ResponseEntity.status(HttpStatus.OK).body(usuarioService.atualizarUsuario(usuario));
     }
 

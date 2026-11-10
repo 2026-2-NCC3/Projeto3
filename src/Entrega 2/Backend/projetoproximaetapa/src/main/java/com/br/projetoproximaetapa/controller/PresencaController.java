@@ -3,6 +3,7 @@ package com.br.projetoproximaetapa.controller;
 import java.util.List;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import com.br.projetoproximaetapa.dto.PresencaRequestDTO;
 import com.br.projetoproximaetapa.model.Presenca;
 import com.br.projetoproximaetapa.service.PresencaService;
 
@@ -23,8 +24,12 @@ public class PresencaController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Presenca> buscarPresenca(@PathVariable Integer id) {
-        return ResponseEntity.status(200).body(presencaService.buscarPresencaPorId(id));
+    public ResponseEntity<Presenca> buscarPresenca(@PathVariable String id) {
+        Presenca presenca = presencaService.buscarPresencaPorId(id);
+        if (presenca == null) {
+            return ResponseEntity.status(404).build();
+        }
+        return ResponseEntity.status(200).body(presenca);
     }
 
     @PostMapping
@@ -32,14 +37,26 @@ public class PresencaController {
         return ResponseEntity.status(201).body(presencaService.cadastrarPresenca(presenca));
     }
 
-    @PutMapping
-    public ResponseEntity<Presenca> atualizarPresenca(@RequestBody Presenca presenca) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Presenca> atualizarPresenca(@PathVariable String id, @RequestBody Presenca presenca) {
+        presenca.setIdPresenca(id);
         return ResponseEntity.status(200).body(presencaService.atualizarPresenca(presenca));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<?> deletarPresenca(@PathVariable Integer id) {
+    public ResponseEntity<?> deletarPresenca(@PathVariable String id) {
         presencaService.deletarPresenca(id);
         return ResponseEntity.status(204).build();
+    }
+
+    // Endpoint de leitura / registo limpo, delegando tudo para o Service
+    @PostMapping("/ler-qrcode")
+    public ResponseEntity<String> registrarPresencaPorQrCode(@RequestBody PresencaRequestDTO request) {
+        try {
+            presencaService.registrarPresenca(request);
+            return ResponseEntity.status(201).body("Presença registrada com sucesso!");
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(e.getMessage());
+        }
     }
 }

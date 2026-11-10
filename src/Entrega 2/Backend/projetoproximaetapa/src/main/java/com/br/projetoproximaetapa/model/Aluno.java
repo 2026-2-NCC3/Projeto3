@@ -3,6 +3,7 @@ package com.br.projetoproximaetapa.model;
 import jakarta.persistence.*;
 import jakarta.validation.constraints.NotBlank;
 import lombok.Data;
+import jakarta.validation.constraints.Pattern;
 
 @Data 
 
@@ -26,7 +27,17 @@ public class Aluno {
     @Column(name = "cidade", length = 100, nullable = false)
     private String cidade;
 
-    @NotBlank(message = "A grade é obrigatória!")
-    @Column(name = "grade", length = 20, nullable = false)
+    @Column(name = "grade", length = 50, nullable = false)
+    @Pattern(regexp = "EM 1° ano|EM 2° ano|EM 3° ano|Graduação|Pós-Graduação|Mestrado|Doutorado|Pós-Doutorado", 
+         message = "Nível de escolaridade inválido")
     private String grade;
+
+    @Column (name = "preferencia", length = 255)
+    private String preferencia;
+
+    @Column (name = "vocacionalResultado", length = 255)
+    private String vocacionalResultado;
+
+    @Column (name = "vocacionalDescricao", length = 255)
+    private String vocacionalDescricao;
 }

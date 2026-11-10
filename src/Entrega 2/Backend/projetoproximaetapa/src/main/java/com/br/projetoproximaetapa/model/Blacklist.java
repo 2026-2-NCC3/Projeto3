@@ -1,6 +1,9 @@
 package com.br.projetoproximaetapa.model;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.Max;
+import jakarta.validation.constraints.Min;
+
 import java.time.LocalDateTime;
 import lombok.Data;
 
@@ -24,6 +27,11 @@ public class Blacklist {
     @Column(name = "motivo", columnDefinition = "TEXT", nullable = false)
     private String motivo;
 
+    @Column(name = "nivel_strike", length = 100)
+    @Min(value = 1, message = "O nível de strike deve ser 1, 2 ou 3")
+    @Max(value = 3, message = "O nível de strike deve ser 1, 2 ou 3")
+    private Integer nivelStrike;
+
     @Column(name = "dias_bloqueio", nullable = false)
     private Integer diasBloqueio;
 
@@ -32,4 +40,8 @@ public class Blacklist {
 
     @Column(name = "data_fim", insertable = false, updatable = false)
     private LocalDateTime dataFim;
+
+    public void setId(Integer id) {
+        this.idBlacklist = id;
+    }
 }

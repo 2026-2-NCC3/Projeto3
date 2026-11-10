@@ -20,7 +20,7 @@ public class TokenUtil {
     
     private static final String HEADER = "Authorization";
     private static final String PREFIX = "Bearer ";
-    private static final String EXPIRATION = "12*60*60*1000";
+    private static final long EXPIRATION = 12 * 60 * 60 * 1000L; // 12 horas em milissegundos
     private static final String SECRET_KEY = "7x#9P$2mK!4vR8@wL%1jH*6tY#3bZ&9f";
     private static final String EMISSOR = "DevNice";
 

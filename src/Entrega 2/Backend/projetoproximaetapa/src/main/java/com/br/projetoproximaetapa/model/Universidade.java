@@ -19,4 +19,8 @@ public class Universidade {
 
     @Column(name = "local_universidade", length = 150)
     private String localUniversidade;
+
+    public void setId(Integer id) {
+        this.idUniversidade = id;
+    }
 }

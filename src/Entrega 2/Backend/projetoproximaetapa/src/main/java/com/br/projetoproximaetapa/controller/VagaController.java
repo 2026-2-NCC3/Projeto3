@@ -32,8 +32,9 @@ public class VagaController {
         return ResponseEntity.status(201).body(vagaService.cadastrarVaga(vaga));
     }
 
-    @PutMapping
-    public ResponseEntity<Vaga> atualizarVaga(@RequestBody Vaga vaga) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Vaga> atualizarVaga(@PathVariable Integer id, @RequestBody Vaga vaga) {
+        vaga.setIdVaga(id);
         return ResponseEntity.status(200).body(vagaService.atualizarVaga(vaga));
     }
 

@@ -40,8 +40,9 @@ public class ProfessorController {
         return ResponseEntity.status(201).body(professorService.cadastrarProfessor(professor));
     }
 
-    @PutMapping
-    public ResponseEntity<Professor> atualizarProfessor(@Valid @RequestBody Professor professor) {
+    @PutMapping("/{cpf}")
+    public ResponseEntity<Professor> atualizarProfessor(@PathVariable String cpf, @Valid @RequestBody Professor professor) {
+        professor.setCpf(cpf);
         return ResponseEntity.status(200).body(professorService.atualizarProfessor(professor));
     }
 

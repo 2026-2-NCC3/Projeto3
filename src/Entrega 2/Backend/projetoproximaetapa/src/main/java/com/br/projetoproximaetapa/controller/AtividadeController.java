@@ -32,8 +32,9 @@ public class AtividadeController {
         return ResponseEntity.status(201).body(atividadeService.cadastrarAtividade(atividade));
     }
 
-    @PutMapping
-    public ResponseEntity<Atividade> atualizarAtividade(@RequestBody Atividade atividade) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Atividade> atualizarAtividade(@PathVariable Integer id, @RequestBody Atividade atividade) {
+        atividade.setId(id);
         return ResponseEntity.status(200).body(atividadeService.atualizarAtividade(atividade));
     }
 

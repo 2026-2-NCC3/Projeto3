@@ -32,8 +32,9 @@ public class UniversidadeController {
         return ResponseEntity.status(201).body(universidadeService.cadastrarUniversidade(universidade));
     }
 
-    @PutMapping
-    public ResponseEntity<Universidade> atualizarUniversidade(@RequestBody Universidade universidade) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Universidade> atualizarUniversidade(@PathVariable Integer id, @RequestBody Universidade universidade) {
+        universidade.setId(id);
         return ResponseEntity.status(200).body(universidadeService.atualizarUniversidade(universidade));
     }
 

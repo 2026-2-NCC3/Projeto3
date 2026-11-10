@@ -32,4 +32,8 @@ public class Notificacao {
 
     @Column(name = "data_criacao", nullable = false)
     private LocalDateTime dataCriacao = LocalDateTime.now();
+
+    public void setId(Integer id) {
+        this.idNotificacao = id;
+    }
 }

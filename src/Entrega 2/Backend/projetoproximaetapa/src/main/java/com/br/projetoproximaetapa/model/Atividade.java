@@ -21,5 +21,9 @@ public class Atividade {
     @Column(name = "data_atividade")
     private LocalDate dataAtividade;
 
+    public void setId(Integer id) {
+        this.idAtividade = id;
+    }
+
     
 }

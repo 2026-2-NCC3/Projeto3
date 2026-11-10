@@ -32,8 +32,9 @@ public class BlacklistController {
         return ResponseEntity.status(201).body(blacklistService.cadastrarBlacklist(blacklist));
     }
 
-    @PutMapping
-    public ResponseEntity<Blacklist> atualizarBlacklist(@RequestBody Blacklist blacklist) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Blacklist> atualizarBlacklist(@PathVariable Integer id, @RequestBody Blacklist blacklist) {
+        blacklist.setId(id);
         return ResponseEntity.status(200).body(blacklistService.atualizarBlacklist(blacklist));
     }
 

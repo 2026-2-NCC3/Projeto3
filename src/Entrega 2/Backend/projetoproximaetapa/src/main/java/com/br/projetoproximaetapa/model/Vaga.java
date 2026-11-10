@@ -16,8 +16,8 @@ public class Vaga {
     @Column(name = "id_vaga")
     private Integer idVaga;
 
-    @Column(name = "cpf_admin", length = 11, nullable = false)
-    private String cpfAdmin;
+    @Column(name = "cpf_professor", length = 11, nullable = false)
+    private String cpfProfessor;
 
     @Column(name = "titulo", length = 150, nullable = false)
     private String titulo;

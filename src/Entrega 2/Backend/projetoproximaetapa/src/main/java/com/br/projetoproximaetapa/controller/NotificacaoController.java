@@ -32,8 +32,9 @@ public class NotificacaoController {
         return ResponseEntity.status(201).body(notificacaoService.cadastrarNotificacao(notificacao));
     }
 
-    @PutMapping
-    public ResponseEntity<Notificacao> atualizarNotificacao(@RequestBody Notificacao notificacao) {
+    @PutMapping("/{id}")
+    public ResponseEntity<Notificacao> atualizarNotificacao(@PathVariable Integer id, @RequestBody Notificacao notificacao) {
+        notificacao.setId(id);
         return ResponseEntity.status(200).body(notificacaoService.atualizarNotificacao(notificacao));
     }
 
